@@ -1,0 +1,35 @@
+﻿@model OnDemandService.Models.PreferOTP
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PreferOTP</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Watsapp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Watsapp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SMS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SMS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PreferOTPId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

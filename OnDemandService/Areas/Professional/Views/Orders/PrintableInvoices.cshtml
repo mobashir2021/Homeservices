@@ -1,0 +1,81 @@
+﻿@{
+    Layout = null;
+}
+
+@model OnDemandService.Models.OrderViewModel
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div style="border: solid 1px;">
+        <table style="width: 100%;">
+            <tr>
+                <td style="text-align: left; vertical-align: bottom;">
+                    <h3 style="font-weight: bold">Nearby Services</h3>
+                    <h5>
+                        Road No. 123 , Company Address, City, Kerala
+                    </h5>
+                    <h5>Phone No: 0123 45 6789</h5>
+                    <h5>VAT No: <b>12398734</b></h5>
+                </td>
+                <td style="text-align: right;">
+
+                    @*<img src="@Html.DisplayTextFor(x => x.LogoPath)" alt="AEC" height="100" width="100" />*@
+                </td>
+            </tr>
+        </table>
+        <br />
+        <h2 style="font-weight: bold">Invoice Information</h2>
+        <table style="border: solid; height: 150px; width: 100%;">
+            <tr>
+                <td style="font-weight: bold">Order No:</td>
+                <td>@Html.DisplayTextFor(x => x.OrderId) </td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Customer Name</td>
+                <td>@Html.DisplayTextFor(x => x.CustomerName)</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Customer Phone</td>
+                <td>@Html.DisplayTextFor(x => x.CustomerPhoneNumber)</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Service Name</td>
+                <td>@Html.DisplayTextFor(x => x.Service)</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Order Appointed Date</td>
+                <td>@Html.DisplayTextFor(x => x.AppointmentDate)</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Order Placed On</td>
+                <td>@Html.DisplayTextFor(x => x.PlacedOn)</td>
+            </tr>
+
+
+            <tr>
+                <td style="font-weight: bold">Amount Received</td>
+                <td>@Html.DisplayTextFor(x => x.Amount)</td>
+            </tr>
+           
+        </table>
+        
+           
+
+
+        
+        <br /><br />
+
+
+        <p style="text-align: center; font-style: italic; font-size: 10pt">
+
+        </p>
+
+    </div>
+</body>
+</html>

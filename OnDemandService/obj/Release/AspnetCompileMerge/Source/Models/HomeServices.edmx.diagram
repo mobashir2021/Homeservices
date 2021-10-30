@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="645215eee783430b994766d2dd18e75f" Name="Diagram1">
+        <EntityTypeShape EntityType="HomeServicesModel.CardInformation" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeServicesModel.Category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeServicesModel.City" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeServicesModel.Complaint" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeServicesModel.Country" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeServicesModel.Customer" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeServicesModel.CustomerComplaint" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeServicesModel.Order" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeServicesModel.PartnerProfessional" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeServicesModel.PaymentMethod" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeServicesModel.Pincode" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeServicesModel.Role" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeServicesModel.ServiceProvided" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeServicesModel.SubCategory" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeServicesModel.User" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="HomeServicesModel.FK_CardInformation_Customer" />
+        <AssociationConnector Association="HomeServicesModel.FK_SubCategory_Category" />
+        <AssociationConnector Association="HomeServicesModel.FK_City_Country" />
+        <AssociationConnector Association="HomeServicesModel.FK_Pincode_City" />
+        <AssociationConnector Association="HomeServicesModel.FK_CustomerComplaint_Complaint" />
+        <AssociationConnector Association="HomeServicesModel.FK_Customer_Pincode" />
+        <AssociationConnector Association="HomeServicesModel.FK_CustomerComplaint_Customer" />
+        <AssociationConnector Association="HomeServicesModel.FK_Orders_SubCategory" />
+        <AssociationConnector Association="HomeServicesModel.FK_Orders_PaymentMethod" />
+        <AssociationConnector Association="HomeServicesModel.FK_Orders_Pincode" />
+        <AssociationConnector Association="HomeServicesModel.FK_PartnerProfessional_Pincode" />
+        <AssociationConnector Association="HomeServicesModel.FK_ServiceProvided_PartnerProfessional" />
+        <AssociationConnector Association="HomeServicesModel.FK_Roles_Users" />
+        <AssociationConnector Association="HomeServicesModel.FK_ServiceProvided_SubCategory" />
+        <AssociationConnector Association="HomeServicesModel.FK_PartnerProfessional_City" />
+        <AssociationConnector Association="HomeServicesModel.FK_PartnerProfessional_SubCategory" />
+        <EntityTypeShape EntityType="HomeServicesModel.OrderWithProfessional" Width="1.5" PointX="11" PointY="6.75" />
+        <AssociationConnector Association="HomeServicesModel.FK_OrderWithProfessional_Orders" />
+        <AssociationConnector Association="HomeServicesModel.FK_OrderWithProfessional_PartnerProfessional" />
+        <EntityTypeShape EntityType="HomeServicesModel.OrderRequest" Width="1.5" PointX="9" PointY="10.75" />
+        <AssociationConnector Association="HomeServicesModel.FK_OrderRequests_Customer" />
+        <AssociationConnector Association="HomeServicesModel.FK_OrderRequests_Orders" />
+        <AssociationConnector Association="HomeServicesModel.FK_OrderRequests_PartnerProfessional" />
+        <EntityTypeShape EntityType="HomeServicesModel.IsNotificationShown" Width="1.5" PointX="12" PointY="10.375" />
+        <AssociationConnector Association="HomeServicesModel.FK_IsNotificationShown_Customer" />
+        <AssociationConnector Association="HomeServicesModel.FK_IsNotificationShown_Orders" />
+        <AssociationConnector Association="HomeServicesModel.FK_IsNotificationShown_PartnerProfessional" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

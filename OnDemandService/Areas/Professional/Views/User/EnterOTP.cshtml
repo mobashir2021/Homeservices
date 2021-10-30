@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Forgot Password";
+    Layout = "~/Areas/Professional/Views/Shared/_LayoutProfLogin.cshtml";
+}
+<div class="login-box">
+
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">Enter OTP</p>
+        @using (Html.BeginForm())
+        {
+            <div class="form-group has-feedback">
+                @Html.Hidden("Mobileno", (object)ViewBag.Mobileno)
+                @Html.Hidden("Otpnumberdata", (object)ViewBag.Otpnumber)
+                <input type="text" class="form-control" name="otpnumber" placeholder="Enter OTP" id="otpnumber">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+
+            <div class="row">
+
+                <div class="col-xs-4">
+                    <button type="submit" id="btnsubmit" class="btn btn-primary btn-block btn-flat">Submit</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        }
+        @*<form action="~/Areas/Professional/User/LoginProfessionalPost" method="post">
+        </form>*@
+
+        <br />
+        <br />
+        <!-- /.social-auth-links -->
+
+        <div style="text-align:center;">
+            <input class="btn btn-primary" value="Login Now" type="button" onclick="location.href='@Url.Action("LoginProfessional", "User")'" />
+            <input class="btn btn-primary" value="Register Now" type="button" onclick="location.href='@Url.Action("RegistrationProfessional", "User")'" />
+        </div>
+
+    </div>
+    <!-- /.login-box-body -->
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+            $("#btnsubmit").click(function (e) {
+                if ($("#otpnumber").val() == "") {
+                    alert("Kindly enter OTP");
+                    e.preventDefault();
+                } else if ($("#Otpnumberdata").val() != $("#otpnumber").val()) {
+                    alert("Kindly enter correct OTP");
+                    e.preventDefault();
+                } 
+            });
+        });
+
+    </script>
+
+
+}

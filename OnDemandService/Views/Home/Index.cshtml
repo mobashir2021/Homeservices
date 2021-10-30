@@ -1,0 +1,771 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<div class="w3layouts-header" style="margin-top:-45px;">
+    <div class="container">
+
+        <div class="logo-nav-agileits">
+            <div class="logo-nav-left">
+                <h1>
+                    <a href="index.html">
+                        <span class="fa fa-home"></span>Logo
+                        <span class="logo-title">home services</span>
+                    </a>
+                </h1>
+            </div>
+
+            <div class="header-grid-left-wthree">
+                <div class="h3-title">
+                    <h3>contact us</h3>
+                </div>
+                <ul>
+                    <li>
+                        <span class="fa fa-envelope" aria-hidden="true"></span>
+                        <a href="mailto:info@example.com">homeservices.com</a>
+                    </li>
+                    <li>
+                        <span class="fa fa-phone" aria-hidden="true"></span>+91-1234567890
+                    </li>
+
+                </ul>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="logo-nav-left1">
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                        Menu
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="@Url.Action("Index", "Home" )">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("AboutUs", "Home" )">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Services", "Home" )">
+                                Services
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ContactUs", "Home" )">
+                                Contact Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("TrackServiceStatus", "Home" )">
+                                Status
+                            </a>
+                        </li>
+                        @if (ViewBag.UserLoggedin != null && Convert.ToBoolean(ViewBag.UserLoggedin))
+                        {
+                            <li>
+                                <a href="@Url.Action("Orders", "Home")">
+                                    Orders
+                                </a>
+                            </li>
+                            <li class="dropdown">
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-bell"><span class="count">&nbsp;</span></span>
+                                </a>
+                                <ul class="dropdown-menu" id="dropdownid"></ul>
+                            </li>
+
+
+                            <li>
+                                <a href="@Url.Action("Logout", "Home")">
+                                    Logout
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@Url.Action("LoginProfessional", "User", new { Area = "Professional" } )">
+                                    Professional
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("LoginUser", "Home")">
+                                    Login
+                                </a>
+                            </li>
+                        }
+
+                        @*<li class="s-bar" style="float:right;">
+                                <div class="search-w3_agileits">
+                                    <input class="search_box" type="checkbox" id="search_box">
+                                    <label class="icon-search" for="search_box">
+                                        <span class="fa fa-search" aria-hidden="true"></span>
+                                    </label>
+                                    <div class="search_form">
+                                        <form action="#" method="post">
+                                            <input type="search" name="Search" placeholder=" " />
+                                            <input type="submit" value="Search">
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>*@
+                    </ul>
+                </div>
+
+            </nav>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<!-- banner -->
+<div class="banner-silder">
+    <div>
+        <ul>
+            <li>
+                @using (Html.BeginForm("SubmitOrder", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="banner-top banner-top1">
+                        @if (ViewBag.DeviceInfo == "Mobile")
+                        {
+                            <div class="container" style="padding-top:30%;">
+
+                                @*<div class="row text-center pb-4">
+                            <div class="col-md-8">
+                                <h2 class="text-white siyah-cerceve" style="font-weight:bold;font-size:30px;">Find Services Nearby</h2>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>*@
+
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="card-body">
+
+
+                                        <div class="row">
+
+                                            <div class="col-md-7">
+
+                                                <input type="text" id="pickservices" name="Services" style="border-radius:2px;max-width:100%;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" class="form-control input-lg" placeholder="Enter Service name">
+
+                                            </div>
+                                            <div class="col-md-2">
+                                                @*<button type="button" id="btnServices" style="width:100%;" class="btn btn-lg btn-warning">Book Now</button>*@
+                                                <input type="submit" id="btnServicesmain" style="width:100%;" class="btn btn-lg btn-warning" value="Book Now" />
+                                            </div>
+                                            <div class="col-md-3 "></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="container" style="height:200px;left:20%;top:70%;position:absolute;">
+
+                                <div class="row text-center pb-4">
+                                    <div class="col-md-8">
+                                        <h2 class="text-white siyah-cerceve" style="font-weight:bold;font-size:30px;">Find Services Nearby</h2>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                </div>
+
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="card-body">
+
+
+                                        <div class="row">
+
+                                            <div class="col-md-7">
+
+                                                <input type="text" id="pickservicesmain" name="Servicesmain" style="border-radius:2px;max-width:100%;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" class="form-control input-lg" placeholder="Enter Service name">
+
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="submit" id="btnServicesmain" style="width:100%;" class="btn btn-lg btn-warning" value="Book Now" />
+                                            </div>
+                                            <div class="col-md-3 "></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+                }
+                </li>
+
+
+
+
+        </ul>
+    </div>
+    <!-- //banner -->
+    <!-- banner bottom -->
+
+    <div class="container">
+        <h2 class="text-center">Find Services Nearby</h2>
+        <hr style="width:300px; border: 3px solid #434444;" />
+        <div class="row">
+            <div class="col-md-2 product-grid">
+                <div class="image ">
+                    <a href="/Home/SubmitOrderGet/?Services=ElectricalService">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/electrician.png" width="80" height="70" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Electrical Services</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image ">
+                    <a href="/Home/SubmitOrderGet/?Services=PaintingServices">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/broom.png" width="80" height="70" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Plumbing Services</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=CleaningServices">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/bucket.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Cleaning Services</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=CarpentryServices">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/wrench.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Carpentry Services</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=PlumbingServices">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/plumber.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Plumbing Services</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=LaundryServices">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/laundry.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Laundry Services</h5>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=ACServices">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/air-conditioning.png" width="80" height="70" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">AC Services</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=CarWashing">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/carwash.png" width="80" height="70" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Car Wash</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=IndustrialWork">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/engineer.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Industrial Work</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=HRServices">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/hr.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">HR Services</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=CallaDriver">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/driver.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Call a Driver</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=ValetParking">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/parking.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Valet Parking</h5>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=CallaTaxi">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/car.png" width="80" height="70" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Call a Taxi</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=CarStudy">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/carstudy.png" width="80" height="70" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Car Study</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=HomeNurse">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/nurse.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Home Nurse</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=TilesWork">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/tile.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Tiles Work</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=InteriorDesign">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/curtain.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Interior Design</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=PaintingWork">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/palette.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Arts Work</h5>
+
+            </div>
+        </div>
+        <br />
+        <h2 class="text-center">Other Services</h2>
+        <hr style="width:300px; border: 3px solid #434444;" />
+        <div class="row">
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=Automobile">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/car.png" width="80" height="70" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Automobile</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=Bank">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/bank.png" width="80" height="70" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Bank</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=Business">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/suitcase.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Business</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=Education">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/diploma.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Education</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=FoodCourt">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/coffee-shop.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Food Court</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=Government">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/office.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Government</h5>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=Hotel">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/hotel.png" width="80" height="70" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Hotel</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=Library">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/library.png" width="80" height="70" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Library</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=Medical">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/medical.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Medical</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=Organisation">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/hierarchy.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Organisation</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=Services">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/support.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Services</h5>
+
+            </div>
+            <div class="col-md-2 product-grid">
+                <div class="image">
+                    <a href="/Home/SubmitOrderGet/?Services=Shop">
+                        <img src="http://www.hmsdatamanagement.co.in/Uploadimages/store.png" width="80" height="80" />
+                    </a>
+                </div>
+                <h5 class="text-center dtext">Shop</h5>
+
+            </div>
+        </div>
+    </div>
+
+    @*Code here*@
+
+    <!-- //banner bottom -->
+    <!-- about -->
+    <div class="agile-about-main">
+        <div class="col-md-4 about-left">
+            <div class="about-main-bg text-center">
+                <h4 class="about-title">Why</h4>
+                <h4 class="sub">
+                    <span>c</span>hoose
+                    <span>u</span>s?
+                </h4>
+            </div>
+        </div>
+        <div class="col-md-8 about-bottom-g1">
+            <h4>One Stop Solution for your Complete Home Maintenance</h4>
+            <!-- <h4>get easy home repairs and upgrades with professional home service providers</h4> your complete home solution.-->
+            <div class="about-grid">
+                <div class="about-bottom-right">
+                    <div class="abouthome-grid">
+                        <span class="hi-icon hi-icon-archive fa fa-check"> </span>
+                    </div>
+                    <div class="about-bottom">
+                        <h5>vision</h5>
+                        <p>Consectetur adipiscing elit estibulum nibh urna</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="about-bottom-right">
+                    <div class="abouthome-grid">
+                        <span class="hi-icon hi-icon-archive  fa fa-book"> </span>
+                    </div>
+                    <div class="about-bottom">
+                        <h5>affordable</h5>
+                        <p>Elit consectetur adipiscing estibulum nibh urna</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class=" about-bottom-right">
+                    <div class="abouthome-grid">
+                        <span class="hi-icon hi-icon-archive fa fa-photo"> </span>
+                    </div>
+                    <div class="about-bottom">
+                        <h5>quality</h5>
+                        <p>Consectetur adipiscing elit estibulum nibh urna</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class=" about-bottom-right">
+                    <div class="abouthome-grid">
+                        <span class="hi-icon hi-icon-archive fa fa-briefcase"> </span>
+                    </div>
+                    <div class="about-bottom">
+                        <h5>24*7 support</h5>
+                        <p>Adipiscing consectetur elit estibulum nibh urna</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="abt-img">
+                <img src="~/images/a1.png" alt="" class="img-responsive" />
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- //about -->
+<!--  about bottom -->
+<div class="w3ls-section">
+    <div class="container">
+        <div class="main-bottom">
+            <div class="col-md-6 col-sm-6 mb-left">
+
+            </div>
+            <div class="col-md-6 col-sm-6 mb-right">
+                <h4>service you can trust</h4>
+                <p>protect all your home appliances & systems.</p>
+                <a href="services.html">view all services</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+@section styles{
+
+    <link href="~/Content/JiSlider.css" rel="stylesheet" />
+}
+
+<!--  //about bottom -->
+@section scripts {
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function load_unseen_notification() {
+                $.ajax({
+                    url: "/Home/GetNotification",
+                    method: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#dropdownid').html(data.Notification);
+                        if (data.count > 0) {
+                            $('.count').html(data.count);
+                        }
+                    }
+                });
+            }
+
+            //$(document).on('click', '#dropdownid', function () {
+            //    $('.count').html('');
+            //    //load_unseen_notification('yes');
+            //});
+
+            setInterval(function () {
+                load_unseen_notification();
+            }, 10000);
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function load_unseen_notificationdata() {
+                $.ajax({
+                    url: "/Home/GetNotification",
+                    method: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#dropdownid').html(data.Notification);
+                        if (data.count > 0) {
+                            $('.count').html(data.count);
+                        }
+                    }
+                });
+            }
+
+            //$(document).on('click', '#dropdownid', function () {
+            //    $('.count').html('');
+            //    //load_unseen_notification('yes');
+            //});
+
+
+            load_unseen_notificationdata();
+
+        });
+
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#datepickerinput').datepicker();
+
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#timepickerinput').timepicker();
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#PincodeData").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Home/GetPincodes",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+
+                                return { label: item.Pincode1, value: item.Pincode1 };
+                            }))
+
+                        }
+                    })
+                },
+                messages: {
+                    noResults: "", results: ""
+                }
+            });
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnServices').click(function (e) {
+                if ($('#pickservices').val() == "") {
+                    alert("Kindly Enter Services");
+                    e.preventDefault();
+                } 
+            });
+
+            $("#pickservices").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Home/GetServices",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.CategoryName, value: item.CategoryName };
+                            }))
+
+                        }
+                    })
+                },
+                messages: {
+                    noResults: "",
+                    results: function (count) {
+                        return count + (count > 1 ? ' results' : ' result ') + ' found';
+                    }
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnServicesmain').click(function (e) {
+                if ($('#pickservicesmain').val() == "") {
+                    alert("Kindly Enter Services");
+                    e.preventDefault();
+                }
+            });
+
+            $("#pickservicesmain").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Home/GetServices",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.CategoryName, value: item.CategoryName };
+                            }))
+
+                        }
+                    })
+                },
+                messages: {
+                    noResults: "",
+                    results: function (count) {
+                        return count + (count > 1 ? ' results' : ' result ') + ' found';
+                    }
+                }
+            });
+        });
+    </script>
+
+}

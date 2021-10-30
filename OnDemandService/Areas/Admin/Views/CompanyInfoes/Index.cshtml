@@ -1,0 +1,64 @@
+﻿@model IEnumerable<OnDemandService.Models.CompanyInfo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Companyname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyPhoneNo1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyPhoneNo2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyLogo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanySlogan)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Companyname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyPhoneNo1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyPhoneNo2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyLogo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanySlogan)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CompanyInfoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CompanyInfoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CompanyInfoId })
+        </td>
+    </tr>
+}
+
+</table>

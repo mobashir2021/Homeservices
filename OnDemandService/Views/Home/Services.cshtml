@@ -1,0 +1,493 @@
+﻿<div class="w3layouts-header" style="margin-top:-45px;">
+    <div class="container">
+
+        <div class="logo-nav-agileits">
+            <div class="logo-nav-left">
+                <h1>
+                    <a href="index.html">
+                        <span class="fa fa-home"></span>Logo
+                        <span class="logo-title">home services</span>
+                    </a>
+                </h1>
+            </div>
+
+            <div class="header-grid-left-wthree">
+                <div class="h3-title">
+                    <h3>contact us</h3>
+                </div>
+                <ul>
+                    <li>
+                        <span class="fa fa-envelope" aria-hidden="true"></span>
+                        <a href="mailto:info@example.com">homeservices.com</a>
+                    </li>
+                    <li>
+                        <span class="fa fa-phone" aria-hidden="true"></span>+91-1234567890
+                    </li>
+                    
+                </ul>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="logo-nav-left1">
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                        Menu
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="@Url.Action("Index", "Home" )">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("AboutUs", "Home" )">
+                                About Us
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="@Url.Action("Services", "Home" )">
+                                Services
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ContactUs", "Home" )">
+                                Contact Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("TrackServiceStatus", "Home" )">
+                                Status
+                            </a>
+                        </li>
+                        @if (ViewBag.UserLoggedin != null && Convert.ToBoolean(ViewBag.UserLoggedin))
+                        {
+                            <li>
+                                <a href="@Url.Action("Orders", "Home")">
+                                    Orders
+                                </a>
+                            </li>
+                            <li class="dropdown">
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-bell"><span class="count">&nbsp;</span></span>
+                                </a>
+                                <ul class="dropdown-menu" id="dropdownid"></ul>
+                            </li>
+
+
+                            <li>
+                                <a href="@Url.Action("Logout", "Home")">
+                                    Logout
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@Url.Action("LoginProfessional", "User", new { Area = "Professional" } )">
+                                    Professional
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("LoginUser", "Home")">
+                                    Login
+                                </a>
+                            </li>
+                        }
+
+                        @*<li class="s-bar" style="float:right;">
+            <div class="search-w3_agileits">
+                <input class="search_box" type="checkbox" id="search_box">
+                <label class="icon-search" for="search_box">
+                    <span class="fa fa-search" aria-hidden="true"></span>
+                </label>
+                <div class="search_form">
+                    <form action="#" method="post">
+                        <input type="search" name="Search" placeholder=" " />
+                        <input type="submit" value="Search">
+                    </form>
+                </div>
+            </div>
+        </li>*@
+                    </ul>
+                </div>
+
+            </nav>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+    <br/><br/>
+    <h2 class="text-center">Choose Services Nearby</h2>
+    <hr style="width:300px; border: 3px solid #434444;" />
+    <div class="row">
+        <div class="col-md-2 product-grid">
+            <div class="image ">
+                <a href="/Home/SubmitOrderGet/?Services=ElectricalService">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/electrician.png" width="80" height="70" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Electrical Services</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image ">
+                <a href="/Home/SubmitOrderGet/?Services=PaintingServices">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/broom.png" width="80" height="70" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Plumbing Services</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=CleaningServices">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/bucket.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Cleaning Services</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=CarpentryServices">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/wrench.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Carpentry Services</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=PlumbingServices">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/plumber.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Plumbing Services</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=LaundryServices">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/laundry.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Laundry Services</h5>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=ACServices">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/air-conditioning.png" width="80" height="70" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">AC Services</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=CarWashing">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/carwash.png" width="80" height="70" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Car Wash</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=IndustrialWork">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/engineer.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Industrial Work</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=HRServices">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/hr.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">HR Services</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=CallaDriver">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/driver.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Call a Driver</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=ValetParking">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/parking.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Valet Parking</h5>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=CallaTaxi">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/car.png" width="80" height="70" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Call a Taxi</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=CarStudy">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/carstudy.png" width="80" height="70" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Car Study</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=HomeNurse">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/nurse.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Home Nurse</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=TilesWork">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/tile.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Tiles Work</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=InteriorDesign">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/curtain.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Interior Design</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=PaintingWork">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/palette.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Arts Work</h5>
+
+        </div>
+    </div>
+    <br />
+    <h2 class="text-center">Other Services</h2>
+    <hr style="width:300px; border: 3px solid #434444;" />
+    <div class="row">
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=Automobile">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/car.png" width="80" height="70" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Automobile</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=Bank">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/bank.png" width="80" height="70" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Bank</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=Business">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/suitcase.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Business</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=Education">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/diploma.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Education</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=FoodCourt">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/coffee-shop.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Food Court</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=Government">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/office.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Government</h5>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=Hotel">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/hotel.png" width="80" height="70" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Hotel</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=Library">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/library.png" width="80" height="70" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Library</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=Medical">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/medical.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Medical</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=Organisation">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/hierarchy.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Organisation</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=Services">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/support.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Services</h5>
+
+        </div>
+        <div class="col-md-2 product-grid">
+            <div class="image">
+                <a href="/Home/SubmitOrderGet/?Services=Shop">
+                    <img src="http://www.hmsdatamanagement.co.in/Uploadimages/store.png" width="80" height="80" />
+                </a>
+            </div>
+            <h5 class="text-center dtext">Shop</h5>
+
+        </div>
+    </div>
+</div>
+<!-- //services -->
+
+<div class="w3ls-section app-head">
+    <div class="container">
+        <div class="col-md-4 col-sm-4 app-mobile">
+            <img src="images/mobile.png" alt="" class="img-responsive" />
+        </div>
+        <div class="col-md-8 col-sm-8 app-main">
+            <h6>
+                home services at your
+                <span>finger tips!</span>
+            </h6>
+            <div class="app-form">
+                <p>get the SMS link to download free app </p>
+                <form action="#" method="post" class="banner_form">
+                    <div class="sec-left">
+                        <input placeholder="Enter your mobile #" name="first name" type="text" required="">
+                    </div>
+                    <input type="submit" value="get the app">
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+            <ul class="app-links">
+                <li>
+                    <a href="#">
+                        <img src="images/1.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/2.png" alt="">
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function load_unseen_notification() {
+                $.ajax({
+                    url: "/Home/GetNotification",
+                    method: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#dropdownid').html(data.Notification);
+                        if (data.count > 0) {
+                            $('.count').html(data.count);
+                        }
+                    }
+                });
+            }
+
+            //$(document).on('click', '#dropdownid', function () {
+            //    $('.count').html('');
+            //    //load_unseen_notification('yes');
+            //});
+
+            setInterval(function () {
+                load_unseen_notification();
+            }, 10000);
+        });
+
+    </script>    
+    
+}

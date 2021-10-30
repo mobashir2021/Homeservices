@@ -1,0 +1,550 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<div class="w3layouts-header" style="margin-top:-45px;">
+    <div class="container">
+
+        <div class="logo-nav-agileits">
+            <div class="logo-nav-left">
+                <h1>
+                    <a href="index.html">
+                        <span class="fa fa-home"></span>Logo
+                        <span class="logo-title">home services</span>
+                    </a>
+                </h1>
+            </div>
+
+            <div class="header-grid-left-wthree">
+                <div class="h3-title">
+                    <h3>contact us</h3>
+                </div>
+                <ul>
+                    <li>
+                        <span class="fa fa-envelope" aria-hidden="true"></span>
+                        <a href="mailto:info@example.com">homeservices.com</a>
+                    </li>
+                    <li>
+                        <span class="fa fa-phone" aria-hidden="true"></span>+91-1234567890
+                    </li>
+                    <li>
+                        <span class="fa fa-mobile" aria-hidden="true"></span>+91-1234567890
+                    </li>
+                </ul>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="logo-nav-left1">
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                        Menu
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="@Url.Action("Index", "Home" )">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("AboutUs", "Home" )">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Services", "Home" )">
+                                Services
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ContactUs", "Home" )">
+                                Contact Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("TrackServiceStatus", "Home" )">
+                                Status
+                            </a>
+                        </li>
+                        @if (ViewBag.UserLoggedin != null && Convert.ToBoolean(ViewBag.UserLoggedin))
+                        {
+                            <li>
+                                <a href="@Url.Action("Orders", "Home")">
+                                    Orders
+                                </a>
+                            </li>
+                            <li class="dropdown">
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-bell"><span class="count">&nbsp;</span></span>
+                                </a>
+                                <ul class="dropdown-menu" id="dropdownid"></ul>
+                            </li>
+
+
+                            <li>
+                                <a href="@Url.Action("Logout", "Home")">
+                                    Logout
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@Url.Action("LoginProfessional", "User", new { Area = "Professional" } )">
+                                    Professional
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("LoginUser", "Home")">
+                                    Login
+                                </a>
+                            </li>
+                        }
+
+                        @*<li class="s-bar" style="float:right;">
+                                <div class="search-w3_agileits">
+                                    <input class="search_box" type="checkbox" id="search_box">
+                                    <label class="icon-search" for="search_box">
+                                        <span class="fa fa-search" aria-hidden="true"></span>
+                                    </label>
+                                    <div class="search_form">
+                                        <form action="#" method="post">
+                                            <input type="search" name="Search" placeholder=" " />
+                                            <input type="submit" value="Search">
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>*@
+                    </ul>
+                </div>
+
+            </nav>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<!-- banner -->
+<div class="banner-silder">
+    <div id="JiSlider" class="jislider">
+        <ul>
+            <li>
+                <div class="banner-top banner-top1">
+                    <div class="container">
+                        <div class="banner-info info2">
+                            <h3>one stop home services</h3>
+                            <p>let us do it for you.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+
+            <li>
+                <div class="banner-top banner-top2">
+                    <div class="container">
+                        <div class="banner-info bg3 info2">
+                            <h3>one click repair service</h3>
+                            <p>repair.&nbsp;improve.&nbsp;maintain</p>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="banner-top banner-top3">
+                    <div class="container">
+                        <div class="banner-info bg3">
+                            <h3>Property Maintenance Services</h3>
+                            <p>one call does it all.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- //banner -->
+    <!-- banner bottom -->
+    <div class="banner-btm">
+        <div class="container">
+            <div class="banner-bottom-main">
+                <div class="col-md-4 banner-btmg1">
+
+                    <div class="form-text">
+                        <h3>Looking for a Handyman?</h3>
+                        <p>We solve your Home repair needs!</p>
+                        <img src="~/images/f1.png" alt="" />
+                    </div>
+                    @using (Html.BeginForm("SubmitOrder", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "banner_form" }))
+                    {
+                        @*<div class="sec-left">
+                                <label class="contact-form-text">Name</label><br />
+                                <input placeholder="your name " name="firstname" type="text" required="">
+                            </div>
+                            <div class="sec-right">
+                                <label class="contact-form-text">Email</label><br />
+                                <input placeholder="xxx@xx.com " name="email" type="email" required="">
+                            </div>
+                            <div class="sec-left">
+                                <label class="contact-form-text">Mobile no.</label><br />
+                                <input placeholder=" XXXXXX" name="mobileno" type="text" required="">
+                            </div>
+                            <div class="form-tx">
+                                <label class="contact-form-text">Address</label><br />
+                                <textarea placeholder="your address" name="address" required=""></textarea>
+                            </div>*@
+                        @*<div class="form-select sec-right">
+                                <label class="contact-form-text">Select Pincode</label>
+
+                                <input type="text" class="form-control" id="PincodeData" name="Pincodes" />
+                            </div>*@
+
+                        <div class="form-select sec-right">
+                            <label class="contact-form-text">Select Service</label>
+                            @Html.DropDownList("Services", null, htmlAttributes: new { Name = "Services" })
+                        </div>
+                        @*<div class="form-tx">
+                                <label class="contact-form-text">Select Time</label>
+                                <div class='input-group date' id='timepicker'>
+                                    <input type='text' class="form-control" name="timepicker" id="timepickerinput" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-time"></span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-tx">
+                                <label class="contact-form-text">Select Date</label>
+                                <div class='input-group date' id='datepicker'>
+                                    <input type='text' class="form-control" name="datepicker" id="datepickerinput" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>*@
+
+                        <input type="submit" value="Submit">
+                    }
+                </div>
+                <div class="col-md-8 banner-btm-grid2">
+                    <div class="col-md-4 banner-grid2">
+                        <div class="banner-subg1">
+                            <h3>maintenance</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit estibulum nibh urna scing.</p>
+                            <span class="fa fa-cog" aria-hidden="true"></span>
+                            <div class="read-btn">
+                                <a href="about.html">view more</a>
+                            </div>
+                        </div>
+                        <div class="banner-subg1">
+                            <h3>cleaning</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit estibulum nibh urna scing.</p>
+                            <span class="fa fa-check-square-o" aria-hidden="true"></span>
+                            <div class="read-btn">
+                                <a href="about.html">view more</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4 banner-grid2">
+                        <div class="banner-subg1">
+                            <h3>repair</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit estibulum nibh urna scing.</p>
+                            <span class="fa fa-yelp" aria-hidden="true"></span>
+                            <div class="read-btn">
+                                <a href="about.html">view more</a>
+                            </div>
+                        </div>
+                        <div class="banner-subg1">
+                            <h3>improvement</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit estibulum nibh urna scing.</p>
+                            <span class="fa fa-gg" aria-hidden="true"></span>
+                            <div class="read-btn">
+                                <a href="about.html">view more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h2 class="text-center">Book Service</h2>
+        <hr style="width:300px; border: 3px solid #434444;" />
+        <div class="row" style="padding-left:10%;">
+            <div class="col-md-3 product-grid">
+                <div class="image">
+                    <a href="#">
+                        <img src="~/images/t8.png" width="250" height="200" />
+                    </a>
+                </div>
+                <h4 class="text-center dtext">Electrical Services</h4>
+                <a href="/Home/SubmitOrderGet/?Services=ElectricalService" class="btn buy">Book Now</a>
+            </div>
+            <div class="col-md-3 product-grid">
+                <div class="image">
+                    <a href="#">
+                        <img src="~/images/t7.png" width="250" height="200" />
+                    </a>
+                </div>
+                <h4 class="text-center dtext">Painting Services</h4>
+                <a href="/Home/SubmitOrderGet/?Services=PaintingServices" class="btn buy">Book Now</a>
+            </div>
+            <div class="col-md-3 product-grid">
+                <div class="image">
+                    <a href="#">
+                        <img src="~/images/t4.jpg" width="230" height="200" />
+                    </a>
+                </div>
+                <h4 class="text-center dtext">Cleaning Services</h4>
+                <a href="/Home/SubmitOrderGet/?Services=CleaningServices" class="btn buy">Book Now</a>
+            </div>
+        </div>
+        <div class="row" style="padding-left:10%;">
+            <div class="col-md-3 product-grid">
+                <div class="image">
+                    <a href="#">
+                        <img src="~/images/t2.jpg" width="250" height="200" />
+                    </a>
+                </div>
+                <h4 class="text-center dtext">Carpentry Services</h4>
+                <a href="/Home/SubmitOrderGet/?Services=CarpentryServices" class="btn buy">Book Now</a>
+            </div>
+            <div class="col-md-3 product-grid">
+                <div class="image">
+                    <a href="#">
+                        <img src="~/images/t5.png" width="250" height="200" />
+                    </a>
+                </div>
+                <h4 class="text-center dtext">Plumbing Services</h4>
+                <a href="/Home/SubmitOrderGet/?Services=PlumbingServices" class="btn buy">Book Now</a>
+            </div>
+            <div class="col-md-3 product-grid">
+                <div class="image">
+                    <a href="#">
+                        <img src="~/images/t6.png" width="230" height="200" />
+                    </a>
+                </div>
+                <h4 class="text-center dtext">Laundry Services</h4>
+                <a href="/Home/SubmitOrderGet/?Services=LaundryServices" class="btn buy">Book Now</a>
+            </div>
+        </div>
+    </div>
+
+    @*Code here*@
+
+    <!-- //banner bottom -->
+    <!-- about -->
+    <div class="agile-about-main">
+        <div class="col-md-4 about-left">
+            <div class="about-main-bg text-center">
+                <h4 class="about-title">Why</h4>
+                <h4 class="sub">
+                    <span>c</span>hoose
+                    <span>u</span>s?
+                </h4>
+            </div>
+        </div>
+        <div class="col-md-8 about-bottom-g1">
+            <h4>One Stop Solution for your Complete Home Maintenance</h4>
+            <!-- <h4>get easy home repairs and upgrades with professional home service providers</h4> your complete home solution.-->
+            <div class="about-grid">
+                <div class="about-bottom-right">
+                    <div class="abouthome-grid">
+                        <span class="hi-icon hi-icon-archive fa fa-check"> </span>
+                    </div>
+                    <div class="about-bottom">
+                        <h5>vision</h5>
+                        <p>Consectetur adipiscing elit estibulum nibh urna</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="about-bottom-right">
+                    <div class="abouthome-grid">
+                        <span class="hi-icon hi-icon-archive  fa fa-book"> </span>
+                    </div>
+                    <div class="about-bottom">
+                        <h5>affordable</h5>
+                        <p>Elit consectetur adipiscing estibulum nibh urna</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class=" about-bottom-right">
+                    <div class="abouthome-grid">
+                        <span class="hi-icon hi-icon-archive fa fa-photo"> </span>
+                    </div>
+                    <div class="about-bottom">
+                        <h5>quality</h5>
+                        <p>Consectetur adipiscing elit estibulum nibh urna</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class=" about-bottom-right">
+                    <div class="abouthome-grid">
+                        <span class="hi-icon hi-icon-archive fa fa-briefcase"> </span>
+                    </div>
+                    <div class="about-bottom">
+                        <h5>24*7 support</h5>
+                        <p>Adipiscing consectetur elit estibulum nibh urna</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="abt-img">
+                <img src="~/images/a1.png" alt="" class="img-responsive" />
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- //about -->
+<!--  about bottom -->
+<div class="w3ls-section">
+    <div class="container">
+        <div class="main-bottom">
+            <div class="col-md-6 col-sm-6 mb-left">
+
+            </div>
+            <div class="col-md-6 col-sm-6 mb-right">
+                <h4>service you can trust</h4>
+                <p>protect all your home appliances & systems.</p>
+                <a href="services.html">view all services</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+@section styles{
+
+    <link href="~/Content/JiSlider.css" rel="stylesheet" />
+}
+
+<!--  //about bottom -->
+@section scripts {
+
+    <script src="~/Scripts/JiSlider.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function load_unseen_notification() {
+                $.ajax({
+                    url: "/Home/GetNotification",
+                    method: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#dropdownid').html(data.Notification);
+                        if (data.count > 0) {
+                            $('.count').html(data.count);
+                        }
+                    }
+                });
+            }
+
+            //$(document).on('click', '#dropdownid', function () {
+            //    $('.count').html('');
+            //    //load_unseen_notification('yes');
+            //});
+
+            setInterval(function () {
+                load_unseen_notification();
+            }, 10000);
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function load_unseen_notificationdata() {
+                $.ajax({
+                    url: "/Home/GetNotification",
+                    method: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#dropdownid').html(data.Notification);
+                        if (data.count > 0) {
+                            $('.count').html(data.count);
+                        }
+                    }
+                });
+            }
+
+            //$(document).on('click', '#dropdownid', function () {
+            //    $('.count').html('');
+            //    //load_unseen_notification('yes');
+            //});
+
+            
+                load_unseen_notificationdata();
+            
+        });
+
+    </script>
+    <script>
+
+
+        $(window).on('load', function () {
+            $('#JiSlider').JiSlider({
+                color: '#fff',
+                start: 1,
+                reverse: false
+            }).addClass('ff')
+        });
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#datepickerinput').datepicker();
+
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#timepickerinput').timepicker();
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#PincodeData").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Home/GetPincodes",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+
+                                return { label: item.Pincode1, value: item.Pincode1 };
+                            }))
+
+                        }
+                    })
+                },
+                messages: {
+                    noResults: "", results: ""
+                }
+            });
+        })
+    </script>
+
+}

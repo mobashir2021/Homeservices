@@ -1,0 +1,67 @@
+﻿@model OnDemandService.Models.CompanyInfo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CompanyInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Companyname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Companyname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyPhoneNo1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyPhoneNo1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyPhoneNo2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyPhoneNo2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyLogo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyLogo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanySlogan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanySlogan)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CompanyInfoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,43 @@
+﻿@model OnDemandService.Models.SMSApi
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SMSApi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SMSUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SMSUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SMSApiKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SMSApiKey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sender)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SMSApiId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

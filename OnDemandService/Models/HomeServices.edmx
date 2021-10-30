@@ -1,0 +1,1886 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HomeServicesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BillPayment">
+          <Key>
+            <PropertyRef Name="BillPaymentId" />
+          </Key>
+          <Property Name="BillPaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="ProfessionalId" Type="int" Nullable="false" />
+          <Property Name="IsApproved" Type="bit" />
+          <Property Name="BillCreationDate" Type="datetime" />
+          <Property Name="TotalPrice" Type="int" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="Comment" Type="varchar" MaxLength="1000" />
+          <Property Name="CGST" Type="varchar" MaxLength="100" />
+          <Property Name="SGST" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="BillPaymentDetails">
+          <Key>
+            <PropertyRef Name="BillPaymentDetailsId" />
+          </Key>
+          <Property Name="BillPaymentDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BillPaymentId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="SubCategoryId" Type="int" />
+          <Property Name="IsApproved" Type="bit" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="Comment" Type="varchar" MaxLength="1000" />
+          <Property Name="Price" Type="varchar" MaxLength="100" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="CardInformation">
+          <Key>
+            <PropertyRef Name="CardInformationId" />
+          </Key>
+          <Property Name="CardInformationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardNo" Type="varchar" MaxLength="1000" />
+          <Property Name="ExpiryDate" Type="varchar" MaxLength="100" />
+          <Property Name="BankName" Type="varchar" MaxLength="100" />
+          <Property Name="IFSCCode" Type="varchar" MaxLength="100" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CategoryImage" Type="varchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="100" />
+          <Property Name="CountryId" Type="int" />
+        </EntityType>
+        <EntityType Name="CompanyInfo">
+          <Key>
+            <PropertyRef Name="CompanyInfoId" />
+          </Key>
+          <Property Name="CompanyInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Companyname" Type="varchar" MaxLength="500" />
+          <Property Name="CompanyAddress" Type="varchar" MaxLength="1000" />
+          <Property Name="CompanyPhoneNo1" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyPhoneNo2" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyLogo" Type="varchar" MaxLength="1000" />
+          <Property Name="CompanySlogan" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Complaint">
+          <Key>
+            <PropertyRef Name="ComplaintId" />
+          </Key>
+          <Property Name="ComplaintId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComplaintType" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="200" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="15" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="PincodeId" Type="int" />
+          <Property Name="Cityid" Type="int" />
+          <Property Name="IsGuest" Type="bit" />
+        </EntityType>
+        <EntityType Name="CustomerComplaint">
+          <Key>
+            <PropertyRef Name="CustomerComplaintId" />
+          </Key>
+          <Property Name="CustomerComplaintId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComplaintId" Type="int" />
+          <Property Name="MiscellanousData" Type="varchar" MaxLength="1000" />
+          <Property Name="Reasons" Type="varchar" MaxLength="1000" />
+          <Property Name="ComplaintDateTime" Type="datetime" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeviceToken">
+          <Key>
+            <PropertyRef Name="DeviceTokenId" />
+          </Key>
+          <Property Name="DeviceTokenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Token" Type="varchar" MaxLength="2000" />
+          <Property Name="Usertype" Type="varchar" MaxLength="20" />
+          <Property Name="Userid" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'HomeServices.dbo.indiapincodeexcel' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="indiapincodeexcel">
+          <Property Name="key" Type="varchar" MaxLength="50" />
+          <Property Name="place_name" Type="varchar" MaxLength="50" />
+          <Property Name="admin_name1" Type="varchar" MaxLength="50" />
+          <Property Name="latitude" Type="varchar" MaxLength="50" />
+          <Property Name="longitude" Type="varchar" MaxLength="50" />
+          <Property Name="accuracy" Type="varchar" MaxLength="50" />
+          <Property Name="Pincode" Type="int" />
+          <Property Name="lat1" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="long1" Type="decimal" Precision="9" Scale="6" />
+        </EntityType>-->
+        <EntityType Name="IsNotificationShown">
+          <Key>
+            <PropertyRef Name="IsNotificationShownId" />
+          </Key>
+          <Property Name="IsNotificationShownId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="ProfessionalId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+        </EntityType>
+        <EntityType Name="MailCredentials">
+          <Key>
+            <PropertyRef Name="MailCredentialsId" />
+          </Key>
+          <Property Name="MailCredentialsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="300" />
+          <Property Name="Password" Type="varchar" MaxLength="200" />
+          <Property Name="Host" Type="varchar" MaxLength="2300" />
+          <Property Name="EnableSSL" Type="bit" />
+          <Property Name="PortNo" Type="int" />
+          <Property Name="UseDefaultCredentials" Type="bit" />
+        </EntityType>
+        <EntityType Name="OrderRating">
+          <Key>
+            <PropertyRef Name="OrderRatingId" />
+          </Key>
+          <Property Name="OrderRatingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ratings" Type="varchar" MaxLength="1000" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="Usercomments" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="OrderRequests">
+          <Key>
+            <PropertyRef Name="OrderRequestId" />
+          </Key>
+          <Property Name="OrderRequestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="Partnerid" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="SelectedDate" Type="date" />
+          <Property Name="SelectedTime" Type="varchar" MaxLength="20" />
+          <Property Name="IsApproved" Type="bit" />
+          <Property Name="IsCancelled" Type="bit" />
+          <Property Name="Status" Type="varchar" MaxLength="100" />
+          <Property Name="NotifyStatus" Type="int" />
+          <Property Name="IsCustomerNotify" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubCategoryId" Type="int" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="OrderTime" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="GuestName" Type="varchar" MaxLength="100" />
+          <Property Name="GuestPhone" Type="varchar" MaxLength="15" />
+          <Property Name="GuestEmail" Type="varchar" MaxLength="100" />
+          <Property Name="GuestPincodeId" Type="int" />
+          <Property Name="GuestCityId" Type="int" />
+          <Property Name="IsStarted" Type="bit" />
+          <Property Name="IsDelivered" Type="bit" />
+          <Property Name="IsPaymentDone" Type="bit" />
+          <Property Name="DeliveredDateTime" Type="datetime" />
+          <Property Name="IsCancelled" Type="bit" />
+          <Property Name="Rating" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="1000" />
+          <Property Name="OrderPlacedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsGoingOn" Type="bit" />
+          <Property Name="PaymentId" Type="int" />
+          <Property Name="SelectedDate" Type="datetime" />
+          <Property Name="IsLocked" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderWithProfessional">
+          <Key>
+            <PropertyRef Name="OrderProfessionalId" />
+          </Key>
+          <Property Name="OrderProfessionalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ProfessionalId" Type="int" Nullable="false" />
+          <Property Name="SelectedDateTime" Type="datetime" />
+          <Property Name="IsCancelled" Type="bit" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+          <Property Name="IsCompleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="PartnerProfessional">
+          <Key>
+            <PropertyRef Name="PartnerProfessionalId" />
+          </Key>
+          <Property Name="PartnerProfessionalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PartnerName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="15" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="PincodeId" Type="int" />
+          <Property Name="Cityid" Type="int" />
+          <Property Name="Ratings" Type="varchar" MaxLength="50" />
+          <Property Name="TotalIncome" Type="varchar" MaxLength="100" />
+          <Property Name="SubCategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="PAT_DEMOGRAPHICS">
+          <Key>
+            <PropertyRef Name="MRNO" />
+          </Key>
+          <Property Name="BED_NO" Type="int" />
+          <Property Name="MRNO" Type="int" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="varchar" MaxLength="100" />
+          <Property Name="AGE" Type="varchar" MaxLength="100" />
+          <Property Name="GENDER" Type="varchar" MaxLength="100" />
+          <Property Name="DOAH" Type="datetime" />
+          <Property Name="DOAICU" Type="datetime" />
+          <Property Name="DIAGNOSIS" Type="varchar" MaxLength="100" />
+          <Property Name="LOCATION" Type="varchar" MaxLength="100" />
+          <Property Name="ENTRY_DATE" Type="datetime" />
+          <Property Name="ICUDAY" Type="int" />
+          <Property Name="ENTERED_BY" Type="varchar" MaxLength="50" />
+          <Property Name="MOBILE" Type="varchar" MaxLength="20" />
+          <Property Name="OUTCOME" Type="varchar" MaxLength="50" />
+          <Property Name="PAT_STATUS" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="Paymentid" />
+          </Key>
+          <Property Name="Paymentid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentType" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pincode">
+          <Key>
+            <PropertyRef Name="PincodeId" />
+          </Key>
+          <Property Name="PincodeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pincode" Type="varchar" MaxLength="100" />
+          <Property Name="Latitude" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="Longitude" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="CityId" Type="int" />
+        </EntityType>
+        <EntityType Name="PreferOTP">
+          <Key>
+            <PropertyRef Name="PreferOTPId" />
+          </Key>
+          <Property Name="PreferOTPId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Watsapp" Type="bit" />
+          <Property Name="SMS" Type="bit" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Roles" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceProvided">
+          <Key>
+            <PropertyRef Name="ServiceProvidedId" />
+          </Key>
+          <Property Name="ServiceProvidedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PartnerId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="SubcategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="SMSApi">
+          <Key>
+            <PropertyRef Name="SMSApiId" />
+          </Key>
+          <Property Name="SMSApiId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SMSUrl" Type="varchar" MaxLength="3000" />
+          <Property Name="SMSApiKey" Type="varchar" MaxLength="2000" />
+          <Property Name="Sender" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryId" />
+          </Key>
+          <Property Name="SubCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubCategoryName" Type="varchar" MaxLength="100" />
+          <Property Name="SubCategoryImage" Type="varchar" MaxLength="500" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WatsappCredentials">
+          <Key>
+            <PropertyRef Name="WatsappCredentialsId" />
+          </Key>
+          <Property Name="WatsappCredentialsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WatsappUsername" Type="varchar" MaxLength="1000" />
+          <Property Name="WatsappPassword" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <Association Name="FK_CardInformation_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CardInformation" Type="Self.CardInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CardInformation">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Pincode">
+          <End Role="Pincode" Type="Self.Pincode" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pincode">
+              <PropertyRef Name="PincodeId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="PincodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerComplaint_Complaint">
+          <End Role="Complaint" Type="Self.Complaint" Multiplicity="0..1" />
+          <End Role="CustomerComplaint" Type="Self.CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Complaint">
+              <PropertyRef Name="ComplaintId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="ComplaintId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerComplaint_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CustomerComplaint" Type="Self.CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IsNotificationShown_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="IsNotificationShown" Type="Self.IsNotificationShown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="IsNotificationShown">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IsNotificationShown_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="IsNotificationShown" Type="Self.IsNotificationShown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="IsNotificationShown">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IsNotificationShown_PartnerProfessional">
+          <End Role="PartnerProfessional" Type="Self.PartnerProfessional" Multiplicity="0..1" />
+          <End Role="IsNotificationShown" Type="Self.IsNotificationShown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="IsNotificationShown">
+              <PropertyRef Name="ProfessionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRequests_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="OrderRequests" Type="Self.OrderRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="OrderRequests">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRequests_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderRequests" Type="Self.OrderRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderRequests">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRequests_PartnerProfessional">
+          <End Role="PartnerProfessional" Type="Self.PartnerProfessional" Multiplicity="0..1" />
+          <End Role="OrderRequests" Type="Self.OrderRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="OrderRequests">
+              <PropertyRef Name="Partnerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_PaymentMethod">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Paymentid" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Pincode">
+          <End Role="Pincode" Type="Self.Pincode" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pincode">
+              <PropertyRef Name="PincodeId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="GuestPincodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_SubCategory">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderWithProfessional_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderWithProfessional" Type="Self.OrderWithProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderWithProfessional">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderWithProfessional_PartnerProfessional">
+          <End Role="PartnerProfessional" Type="Self.PartnerProfessional" Multiplicity="1" />
+          <End Role="OrderWithProfessional" Type="Self.OrderWithProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="OrderWithProfessional">
+              <PropertyRef Name="ProfessionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartnerProfessional_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="PartnerProfessional" Type="Self.PartnerProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="PartnerProfessional">
+              <PropertyRef Name="Cityid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartnerProfessional_Pincode">
+          <End Role="Pincode" Type="Self.Pincode" Multiplicity="0..1" />
+          <End Role="PartnerProfessional" Type="Self.PartnerProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pincode">
+              <PropertyRef Name="PincodeId" />
+            </Principal>
+            <Dependent Role="PartnerProfessional">
+              <PropertyRef Name="PincodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartnerProfessional_SubCategory">
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="0..1" />
+          <End Role="PartnerProfessional" Type="Self.PartnerProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryId" />
+            </Principal>
+            <Dependent Role="PartnerProfessional">
+              <PropertyRef Name="SubCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pincode_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Pincode" Type="Self.Pincode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Pincode">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceProvided_PartnerProfessional">
+          <End Role="PartnerProfessional" Type="Self.PartnerProfessional" Multiplicity="1" />
+          <End Role="ServiceProvided" Type="Self.ServiceProvided" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="ServiceProvided">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategory_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HomeServicesModelStoreContainer">
+          <EntitySet Name="BillPayment" EntityType="Self.BillPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BillPaymentDetails" EntityType="Self.BillPaymentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CardInformation" EntityType="Self.CardInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyInfo" EntityType="Self.CompanyInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Complaint" EntityType="Self.Complaint" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerComplaint" EntityType="Self.CustomerComplaint" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceToken" EntityType="Self.DeviceToken" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IsNotificationShown" EntityType="Self.IsNotificationShown" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MailCredentials" EntityType="Self.MailCredentials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderRating" EntityType="Self.OrderRating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderRequests" EntityType="Self.OrderRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderWithProfessional" EntityType="Self.OrderWithProfessional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartnerProfessional" EntityType="Self.PartnerProfessional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAT_DEMOGRAPHICS" EntityType="Self.PAT_DEMOGRAPHICS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pincode" EntityType="Self.Pincode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreferOTP" EntityType="Self.PreferOTP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceProvided" EntityType="Self.ServiceProvided" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SMSApi" EntityType="Self.SMSApi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WatsappCredentials" EntityType="Self.WatsappCredentials" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CardInformation_Customer" Association="Self.FK_CardInformation_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CardInformation" EntitySet="CardInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_Country" Association="Self.FK_City_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Pincode" Association="Self.FK_Customer_Pincode">
+            <End Role="Pincode" EntitySet="Pincode" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerComplaint_Complaint" Association="Self.FK_CustomerComplaint_Complaint">
+            <End Role="Complaint" EntitySet="Complaint" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaint" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerComplaint_Customer" Association="Self.FK_CustomerComplaint_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaint" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IsNotificationShown_Customer" Association="Self.FK_IsNotificationShown_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="IsNotificationShown" EntitySet="IsNotificationShown" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IsNotificationShown_Orders" Association="Self.FK_IsNotificationShown_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="IsNotificationShown" EntitySet="IsNotificationShown" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IsNotificationShown_PartnerProfessional" Association="Self.FK_IsNotificationShown_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessional" />
+            <End Role="IsNotificationShown" EntitySet="IsNotificationShown" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRequests_Customer" Association="Self.FK_OrderRequests_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="OrderRequests" EntitySet="OrderRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRequests_Orders" Association="Self.FK_OrderRequests_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderRequests" EntitySet="OrderRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRequests_PartnerProfessional" Association="Self.FK_OrderRequests_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessional" />
+            <End Role="OrderRequests" EntitySet="OrderRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_PaymentMethod" Association="Self.FK_Orders_PaymentMethod">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Pincode" Association="Self.FK_Orders_Pincode">
+            <End Role="Pincode" EntitySet="Pincode" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_SubCategory" Association="Self.FK_Orders_SubCategory">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderWithProfessional_Orders" Association="Self.FK_OrderWithProfessional_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderWithProfessional" EntitySet="OrderWithProfessional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderWithProfessional_PartnerProfessional" Association="Self.FK_OrderWithProfessional_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessional" />
+            <End Role="OrderWithProfessional" EntitySet="OrderWithProfessional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartnerProfessional_City" Association="Self.FK_PartnerProfessional_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartnerProfessional_Pincode" Association="Self.FK_PartnerProfessional_Pincode">
+            <End Role="Pincode" EntitySet="Pincode" />
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartnerProfessional_SubCategory" Association="Self.FK_PartnerProfessional_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategory" />
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pincode_City" Association="Self.FK_Pincode_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Pincode" EntitySet="Pincode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_Users" Association="Self.FK_Roles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceProvided_PartnerProfessional" Association="Self.FK_ServiceProvided_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessional" />
+            <End Role="ServiceProvided" EntitySet="ServiceProvided" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_Category" Association="Self.FK_SubCategory_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="SubCategory" EntitySet="SubCategory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HomeServicesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HomeServicesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BillPayments" EntityType="HomeServicesModel.BillPayment" />
+          <EntitySet Name="BillPaymentDetails" EntityType="HomeServicesModel.BillPaymentDetail" />
+          <EntitySet Name="CardInformations" EntityType="HomeServicesModel.CardInformation" />
+          <EntitySet Name="Categories" EntityType="HomeServicesModel.Category" />
+          <EntitySet Name="Cities" EntityType="HomeServicesModel.City" />
+          <EntitySet Name="CompanyInfoes" EntityType="HomeServicesModel.CompanyInfo" />
+          <EntitySet Name="Complaints" EntityType="HomeServicesModel.Complaint" />
+          <EntitySet Name="Countries" EntityType="HomeServicesModel.Country" />
+          <EntitySet Name="Customers" EntityType="HomeServicesModel.Customer" />
+          <EntitySet Name="CustomerComplaints" EntityType="HomeServicesModel.CustomerComplaint" />
+          <EntitySet Name="DeviceTokens" EntityType="HomeServicesModel.DeviceToken" />
+          <EntitySet Name="IsNotificationShowns" EntityType="HomeServicesModel.IsNotificationShown" />
+          <EntitySet Name="MailCredentials" EntityType="HomeServicesModel.MailCredential" />
+          <EntitySet Name="OrderRatings" EntityType="HomeServicesModel.OrderRating" />
+          <EntitySet Name="OrderRequests" EntityType="HomeServicesModel.OrderRequest" />
+          <EntitySet Name="Orders" EntityType="HomeServicesModel.Order" />
+          <EntitySet Name="OrderWithProfessionals" EntityType="HomeServicesModel.OrderWithProfessional" />
+          <EntitySet Name="PartnerProfessionals" EntityType="HomeServicesModel.PartnerProfessional" />
+          <EntitySet Name="PAT_DEMOGRAPHICS" EntityType="HomeServicesModel.PAT_DEMOGRAPHICS" />
+          <EntitySet Name="PaymentMethods" EntityType="HomeServicesModel.PaymentMethod" />
+          <EntitySet Name="Pincodes" EntityType="HomeServicesModel.Pincode" />
+          <EntitySet Name="PreferOTPs" EntityType="HomeServicesModel.PreferOTP" />
+          <EntitySet Name="Roles" EntityType="HomeServicesModel.Role" />
+          <EntitySet Name="ServiceProvideds" EntityType="HomeServicesModel.ServiceProvided" />
+          <EntitySet Name="SMSApis" EntityType="HomeServicesModel.SMSApi" />
+          <EntitySet Name="SubCategories" EntityType="HomeServicesModel.SubCategory" />
+          <EntitySet Name="Users" EntityType="HomeServicesModel.User" />
+          <EntitySet Name="WatsappCredentials" EntityType="HomeServicesModel.WatsappCredential" />
+          <AssociationSet Name="FK_CardInformation_Customer" Association="HomeServicesModel.FK_CardInformation_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CardInformation" EntitySet="CardInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_Category" Association="HomeServicesModel.FK_SubCategory_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="SubCategory" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_Country" Association="HomeServicesModel.FK_City_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartnerProfessional_City" Association="HomeServicesModel.FK_PartnerProfessional_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessionals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pincode_City" Association="HomeServicesModel.FK_Pincode_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Pincode" EntitySet="Pincodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerComplaint_Complaint" Association="HomeServicesModel.FK_CustomerComplaint_Complaint">
+            <End Role="Complaint" EntitySet="Complaints" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Pincode" Association="HomeServicesModel.FK_Customer_Pincode">
+            <End Role="Pincode" EntitySet="Pincodes" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerComplaint_Customer" Association="HomeServicesModel.FK_CustomerComplaint_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IsNotificationShown_Customer" Association="HomeServicesModel.FK_IsNotificationShown_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="IsNotificationShown" EntitySet="IsNotificationShowns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRequests_Customer" Association="HomeServicesModel.FK_OrderRequests_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="OrderRequest" EntitySet="OrderRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_SubCategory" Association="HomeServicesModel.FK_Orders_SubCategory">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IsNotificationShown_Orders" Association="HomeServicesModel.FK_IsNotificationShown_Orders">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="IsNotificationShown" EntitySet="IsNotificationShowns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IsNotificationShown_PartnerProfessional" Association="HomeServicesModel.FK_IsNotificationShown_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessionals" />
+            <End Role="IsNotificationShown" EntitySet="IsNotificationShowns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRequests_Orders" Association="HomeServicesModel.FK_OrderRequests_Orders">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderRequest" EntitySet="OrderRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRequests_PartnerProfessional" Association="HomeServicesModel.FK_OrderRequests_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessionals" />
+            <End Role="OrderRequest" EntitySet="OrderRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_PaymentMethod" Association="HomeServicesModel.FK_Orders_PaymentMethod">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Pincode" Association="HomeServicesModel.FK_Orders_Pincode">
+            <End Role="Pincode" EntitySet="Pincodes" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderWithProfessional_Orders" Association="HomeServicesModel.FK_OrderWithProfessional_Orders">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderWithProfessional" EntitySet="OrderWithProfessionals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderWithProfessional_PartnerProfessional" Association="HomeServicesModel.FK_OrderWithProfessional_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessionals" />
+            <End Role="OrderWithProfessional" EntitySet="OrderWithProfessionals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartnerProfessional_Pincode" Association="HomeServicesModel.FK_PartnerProfessional_Pincode">
+            <End Role="Pincode" EntitySet="Pincodes" />
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessionals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartnerProfessional_SubCategory" Association="HomeServicesModel.FK_PartnerProfessional_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategories" />
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessionals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceProvided_PartnerProfessional" Association="HomeServicesModel.FK_ServiceProvided_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessionals" />
+            <End Role="ServiceProvided" EntitySet="ServiceProvideds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_Users" Association="HomeServicesModel.FK_Roles_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BillPayment">
+          <Key>
+            <PropertyRef Name="BillPaymentId" />
+          </Key>
+          <Property Name="BillPaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="ProfessionalId" Type="Int32" Nullable="false" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Name="BillCreationDate" Type="DateTime" Precision="3" />
+          <Property Name="TotalPrice" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CGST" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SGST" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BillPaymentDetail">
+          <Key>
+            <PropertyRef Name="BillPaymentDetailsId" />
+          </Key>
+          <Property Name="BillPaymentDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillPaymentId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="SubCategoryId" Type="Int32" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CardInformation">
+          <Key>
+            <PropertyRef Name="CardInformationId" />
+          </Key>
+          <Property Name="CardInformationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardNo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ExpiryDate" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BankName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IFSCCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="HomeServicesModel.FK_CardInformation_Customer" FromRole="CardInformation" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="SubCategories" Relationship="HomeServicesModel.FK_SubCategory_Category" FromRole="Category" ToRole="SubCategory" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="HomeServicesModel.FK_City_Country" FromRole="City" ToRole="Country" />
+          <NavigationProperty Name="PartnerProfessionals" Relationship="HomeServicesModel.FK_PartnerProfessional_City" FromRole="City" ToRole="PartnerProfessional" />
+          <NavigationProperty Name="Pincodes" Relationship="HomeServicesModel.FK_Pincode_City" FromRole="City" ToRole="Pincode" />
+        </EntityType>
+        <EntityType Name="CompanyInfo">
+          <Key>
+            <PropertyRef Name="CompanyInfoId" />
+          </Key>
+          <Property Name="CompanyInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Companyname" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyPhoneNo1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyPhoneNo2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyLogo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CompanySlogan" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Complaint">
+          <Key>
+            <PropertyRef Name="ComplaintId" />
+          </Key>
+          <Property Name="ComplaintId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComplaintType" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CustomerComplaints" Relationship="HomeServicesModel.FK_CustomerComplaint_Complaint" FromRole="Complaint" ToRole="CustomerComplaint" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cities" Relationship="HomeServicesModel.FK_City_Country" FromRole="Country" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="MobileNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PincodeId" Type="Int32" />
+          <Property Name="Cityid" Type="Int32" />
+          <Property Name="IsGuest" Type="Boolean" />
+          <NavigationProperty Name="CardInformations" Relationship="HomeServicesModel.FK_CardInformation_Customer" FromRole="Customer" ToRole="CardInformation" />
+          <NavigationProperty Name="Pincode" Relationship="HomeServicesModel.FK_Customer_Pincode" FromRole="Customer" ToRole="Pincode" />
+          <NavigationProperty Name="CustomerComplaints" Relationship="HomeServicesModel.FK_CustomerComplaint_Customer" FromRole="Customer" ToRole="CustomerComplaint" />
+          <NavigationProperty Name="IsNotificationShowns" Relationship="HomeServicesModel.FK_IsNotificationShown_Customer" FromRole="Customer" ToRole="IsNotificationShown" />
+          <NavigationProperty Name="OrderRequests" Relationship="HomeServicesModel.FK_OrderRequests_Customer" FromRole="Customer" ToRole="OrderRequest" />
+          <NavigationProperty Name="Orders" Relationship="HomeServicesModel.FK_Orders_SubCategory" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="CustomerComplaint">
+          <Key>
+            <PropertyRef Name="CustomerComplaintId" />
+          </Key>
+          <Property Name="CustomerComplaintId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComplaintId" Type="Int32" />
+          <Property Name="MiscellanousData" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Reasons" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ComplaintDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Complaint" Relationship="HomeServicesModel.FK_CustomerComplaint_Complaint" FromRole="CustomerComplaint" ToRole="Complaint" />
+          <NavigationProperty Name="Customer" Relationship="HomeServicesModel.FK_CustomerComplaint_Customer" FromRole="CustomerComplaint" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="DeviceToken">
+          <Key>
+            <PropertyRef Name="DeviceTokenId" />
+          </Key>
+          <Property Name="DeviceTokenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Token" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Usertype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Userid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="IsNotificationShown">
+          <Key>
+            <PropertyRef Name="IsNotificationShownId" />
+          </Key>
+          <Property Name="IsNotificationShownId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="ProfessionalId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="HomeServicesModel.FK_IsNotificationShown_Customer" FromRole="IsNotificationShown" ToRole="Customer" />
+          <NavigationProperty Name="Order" Relationship="HomeServicesModel.FK_IsNotificationShown_Orders" FromRole="IsNotificationShown" ToRole="Order" />
+          <NavigationProperty Name="PartnerProfessional" Relationship="HomeServicesModel.FK_IsNotificationShown_PartnerProfessional" FromRole="IsNotificationShown" ToRole="PartnerProfessional" />
+        </EntityType>
+        <EntityType Name="MailCredential">
+          <Key>
+            <PropertyRef Name="MailCredentialsId" />
+          </Key>
+          <Property Name="MailCredentialsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Host" Type="String" MaxLength="2300" FixedLength="false" Unicode="false" />
+          <Property Name="EnableSSL" Type="Boolean" />
+          <Property Name="PortNo" Type="Int32" />
+          <Property Name="UseDefaultCredentials" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="OrderRating">
+          <Key>
+            <PropertyRef Name="OrderRatingId" />
+          </Key>
+          <Property Name="OrderRatingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ratings" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="Usercomments" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OrderRequest">
+          <Key>
+            <PropertyRef Name="OrderRequestId" />
+          </Key>
+          <Property Name="OrderRequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="Partnerid" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="SelectedDate" Type="DateTime" Precision="0" />
+          <Property Name="SelectedTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Name="IsCancelled" Type="Boolean" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NotifyStatus" Type="Int32" />
+          <Property Name="IsCustomerNotify" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="HomeServicesModel.FK_OrderRequests_Customer" FromRole="OrderRequest" ToRole="Customer" />
+          <NavigationProperty Name="Order" Relationship="HomeServicesModel.FK_OrderRequests_Orders" FromRole="OrderRequest" ToRole="Order" />
+          <NavigationProperty Name="PartnerProfessional" Relationship="HomeServicesModel.FK_OrderRequests_PartnerProfessional" FromRole="OrderRequest" ToRole="PartnerProfessional" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrderTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="GuestName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GuestPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="GuestEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GuestPincodeId" Type="Int32" />
+          <Property Name="GuestCityId" Type="Int32" />
+          <Property Name="IsStarted" Type="Boolean" />
+          <Property Name="IsDelivered" Type="Boolean" />
+          <Property Name="IsPaymentDone" Type="Boolean" />
+          <Property Name="DeliveredDateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsCancelled" Type="Boolean" />
+          <Property Name="Rating" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="OrderPlacedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsGoingOn" Type="Boolean" />
+          <Property Name="PaymentId" Type="Int32" />
+          <Property Name="SelectedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsLocked" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="HomeServicesModel.FK_Orders_SubCategory" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="IsNotificationShowns" Relationship="HomeServicesModel.FK_IsNotificationShown_Orders" FromRole="Order" ToRole="IsNotificationShown" />
+          <NavigationProperty Name="OrderRequests" Relationship="HomeServicesModel.FK_OrderRequests_Orders" FromRole="Order" ToRole="OrderRequest" />
+          <NavigationProperty Name="PaymentMethod" Relationship="HomeServicesModel.FK_Orders_PaymentMethod" FromRole="Order" ToRole="PaymentMethod" />
+          <NavigationProperty Name="Pincode" Relationship="HomeServicesModel.FK_Orders_Pincode" FromRole="Order" ToRole="Pincode" />
+          <NavigationProperty Name="OrderWithProfessionals" Relationship="HomeServicesModel.FK_OrderWithProfessional_Orders" FromRole="Order" ToRole="OrderWithProfessional" />
+        </EntityType>
+        <EntityType Name="OrderWithProfessional">
+          <Key>
+            <PropertyRef Name="OrderProfessionalId" />
+          </Key>
+          <Property Name="OrderProfessionalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ProfessionalId" Type="Int32" Nullable="false" />
+          <Property Name="SelectedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsCancelled" Type="Boolean" />
+          <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IsCompleted" Type="Boolean" />
+          <NavigationProperty Name="Order" Relationship="HomeServicesModel.FK_OrderWithProfessional_Orders" FromRole="OrderWithProfessional" ToRole="Order" />
+          <NavigationProperty Name="PartnerProfessional" Relationship="HomeServicesModel.FK_OrderWithProfessional_PartnerProfessional" FromRole="OrderWithProfessional" ToRole="PartnerProfessional" />
+        </EntityType>
+        <EntityType Name="PartnerProfessional">
+          <Key>
+            <PropertyRef Name="PartnerProfessionalId" />
+          </Key>
+          <Property Name="PartnerProfessionalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="MobileNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PincodeId" Type="Int32" />
+          <Property Name="Cityid" Type="Int32" />
+          <Property Name="Ratings" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalIncome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategoryId" Type="Int32" />
+          <NavigationProperty Name="City" Relationship="HomeServicesModel.FK_PartnerProfessional_City" FromRole="PartnerProfessional" ToRole="City" />
+          <NavigationProperty Name="IsNotificationShowns" Relationship="HomeServicesModel.FK_IsNotificationShown_PartnerProfessional" FromRole="PartnerProfessional" ToRole="IsNotificationShown" />
+          <NavigationProperty Name="OrderRequests" Relationship="HomeServicesModel.FK_OrderRequests_PartnerProfessional" FromRole="PartnerProfessional" ToRole="OrderRequest" />
+          <NavigationProperty Name="OrderWithProfessionals" Relationship="HomeServicesModel.FK_OrderWithProfessional_PartnerProfessional" FromRole="PartnerProfessional" ToRole="OrderWithProfessional" />
+          <NavigationProperty Name="Pincode" Relationship="HomeServicesModel.FK_PartnerProfessional_Pincode" FromRole="PartnerProfessional" ToRole="Pincode" />
+          <NavigationProperty Name="SubCategory" Relationship="HomeServicesModel.FK_PartnerProfessional_SubCategory" FromRole="PartnerProfessional" ToRole="SubCategory" />
+          <NavigationProperty Name="ServiceProvideds" Relationship="HomeServicesModel.FK_ServiceProvided_PartnerProfessional" FromRole="PartnerProfessional" ToRole="ServiceProvided" />
+        </EntityType>
+        <EntityType Name="PAT_DEMOGRAPHICS">
+          <Key>
+            <PropertyRef Name="MRNO" />
+          </Key>
+          <Property Name="BED_NO" Type="Int32" />
+          <Property Name="MRNO" Type="Int32" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AGE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GENDER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DOAH" Type="DateTime" Precision="3" />
+          <Property Name="DOAICU" Type="DateTime" Precision="3" />
+          <Property Name="DIAGNOSIS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LOCATION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ENTRY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="ICUDAY" Type="Int32" />
+          <Property Name="ENTERED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MOBILE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OUTCOME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PAT_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="Paymentid" />
+          </Key>
+          <Property Name="Paymentid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Orders" Relationship="HomeServicesModel.FK_Orders_PaymentMethod" FromRole="PaymentMethod" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Pincode">
+          <Key>
+            <PropertyRef Name="PincodeId" />
+          </Key>
+          <Property Name="PincodeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pincode1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="Longitude" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="CityId" Type="Int32" />
+          <NavigationProperty Name="City" Relationship="HomeServicesModel.FK_Pincode_City" FromRole="Pincode" ToRole="City" />
+          <NavigationProperty Name="Customers" Relationship="HomeServicesModel.FK_Customer_Pincode" FromRole="Pincode" ToRole="Customer" />
+          <NavigationProperty Name="Orders" Relationship="HomeServicesModel.FK_Orders_Pincode" FromRole="Pincode" ToRole="Order" />
+          <NavigationProperty Name="PartnerProfessionals" Relationship="HomeServicesModel.FK_PartnerProfessional_Pincode" FromRole="Pincode" ToRole="PartnerProfessional" />
+        </EntityType>
+        <EntityType Name="PreferOTP">
+          <Key>
+            <PropertyRef Name="PreferOTPId" />
+          </Key>
+          <Property Name="PreferOTPId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Watsapp" Type="Boolean" />
+          <Property Name="SMS" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Roles" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="HomeServicesModel.FK_Roles_Users" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ServiceProvided">
+          <Key>
+            <PropertyRef Name="ServiceProvidedId" />
+          </Key>
+          <Property Name="ServiceProvidedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="SubcategoryId" Type="Int32" />
+          <NavigationProperty Name="PartnerProfessional" Relationship="HomeServicesModel.FK_ServiceProvided_PartnerProfessional" FromRole="ServiceProvided" ToRole="PartnerProfessional" />
+        </EntityType>
+        <EntityType Name="SMSApi">
+          <Key>
+            <PropertyRef Name="SMSApiId" />
+          </Key>
+          <Property Name="SMSApiId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SMSUrl" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="SMSApiKey" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Sender" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryId" />
+          </Key>
+          <Property Name="SubCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategoryImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="HomeServicesModel.FK_SubCategory_Category" FromRole="SubCategory" ToRole="Category" />
+          <NavigationProperty Name="PartnerProfessionals" Relationship="HomeServicesModel.FK_PartnerProfessional_SubCategory" FromRole="SubCategory" ToRole="PartnerProfessional" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Roles" Relationship="HomeServicesModel.FK_Roles_Users" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="WatsappCredential">
+          <Key>
+            <PropertyRef Name="WatsappCredentialsId" />
+          </Key>
+          <Property Name="WatsappCredentialsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WatsappUsername" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="WatsappPassword" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_CardInformation_Customer">
+          <End Type="HomeServicesModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="HomeServicesModel.CardInformation" Role="CardInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CardInformation">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategory_Category">
+          <End Type="HomeServicesModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="HomeServicesModel.SubCategory" Role="SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_Country">
+          <End Type="HomeServicesModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartnerProfessional_City">
+          <End Type="HomeServicesModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.PartnerProfessional" Role="PartnerProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="PartnerProfessional">
+              <PropertyRef Name="Cityid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pincode_City">
+          <End Type="HomeServicesModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.Pincode" Role="Pincode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Pincode">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerComplaint_Complaint">
+          <End Type="HomeServicesModel.Complaint" Role="Complaint" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.CustomerComplaint" Role="CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Complaint">
+              <PropertyRef Name="ComplaintId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="ComplaintId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Pincode">
+          <End Type="HomeServicesModel.Pincode" Role="Pincode" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pincode">
+              <PropertyRef Name="PincodeId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="PincodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerComplaint_Customer">
+          <End Type="HomeServicesModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="HomeServicesModel.CustomerComplaint" Role="CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IsNotificationShown_Customer">
+          <End Type="HomeServicesModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.IsNotificationShown" Role="IsNotificationShown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="IsNotificationShown">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRequests_Customer">
+          <End Type="HomeServicesModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.OrderRequest" Role="OrderRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="OrderRequest">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_SubCategory">
+          <End Type="HomeServicesModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IsNotificationShown_Orders">
+          <End Type="HomeServicesModel.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.IsNotificationShown" Role="IsNotificationShown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="IsNotificationShown">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IsNotificationShown_PartnerProfessional">
+          <End Type="HomeServicesModel.PartnerProfessional" Role="PartnerProfessional" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.IsNotificationShown" Role="IsNotificationShown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="IsNotificationShown">
+              <PropertyRef Name="ProfessionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRequests_Orders">
+          <End Type="HomeServicesModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="HomeServicesModel.OrderRequest" Role="OrderRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderRequest">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRequests_PartnerProfessional">
+          <End Type="HomeServicesModel.PartnerProfessional" Role="PartnerProfessional" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.OrderRequest" Role="OrderRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="OrderRequest">
+              <PropertyRef Name="Partnerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_PaymentMethod">
+          <End Type="HomeServicesModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Paymentid" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Pincode">
+          <End Type="HomeServicesModel.Pincode" Role="Pincode" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pincode">
+              <PropertyRef Name="PincodeId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="GuestPincodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderWithProfessional_Orders">
+          <End Type="HomeServicesModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="HomeServicesModel.OrderWithProfessional" Role="OrderWithProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderWithProfessional">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderWithProfessional_PartnerProfessional">
+          <End Type="HomeServicesModel.PartnerProfessional" Role="PartnerProfessional" Multiplicity="1" />
+          <End Type="HomeServicesModel.OrderWithProfessional" Role="OrderWithProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="OrderWithProfessional">
+              <PropertyRef Name="ProfessionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartnerProfessional_Pincode">
+          <End Type="HomeServicesModel.Pincode" Role="Pincode" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.PartnerProfessional" Role="PartnerProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pincode">
+              <PropertyRef Name="PincodeId" />
+            </Principal>
+            <Dependent Role="PartnerProfessional">
+              <PropertyRef Name="PincodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartnerProfessional_SubCategory">
+          <End Type="HomeServicesModel.SubCategory" Role="SubCategory" Multiplicity="0..1" />
+          <End Type="HomeServicesModel.PartnerProfessional" Role="PartnerProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryId" />
+            </Principal>
+            <Dependent Role="PartnerProfessional">
+              <PropertyRef Name="SubCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceProvided_PartnerProfessional">
+          <End Type="HomeServicesModel.PartnerProfessional" Role="PartnerProfessional" Multiplicity="1" />
+          <End Type="HomeServicesModel.ServiceProvided" Role="ServiceProvided" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="ServiceProvided">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_Users">
+          <End Type="HomeServicesModel.User" Role="User" Multiplicity="1" />
+          <End Type="HomeServicesModel.Role" Role="Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HomeServicesModelStoreContainer" CdmEntityContainer="HomeServicesEntities">
+          <EntitySetMapping Name="BillPayments">
+            <EntityTypeMapping TypeName="HomeServicesModel.BillPayment">
+              <MappingFragment StoreEntitySet="BillPayment">
+                <ScalarProperty Name="SGST" ColumnName="SGST" />
+                <ScalarProperty Name="CGST" ColumnName="CGST" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="BillCreationDate" ColumnName="BillCreationDate" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="ProfessionalId" ColumnName="ProfessionalId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="BillPaymentId" ColumnName="BillPaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillPaymentDetails">
+            <EntityTypeMapping TypeName="HomeServicesModel.BillPaymentDetail">
+              <MappingFragment StoreEntitySet="BillPaymentDetails">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="BillPaymentId" ColumnName="BillPaymentId" />
+                <ScalarProperty Name="BillPaymentDetailsId" ColumnName="BillPaymentDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardInformations">
+            <EntityTypeMapping TypeName="HomeServicesModel.CardInformation">
+              <MappingFragment StoreEntitySet="CardInformation">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="IFSCCode" ColumnName="IFSCCode" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="CardInformationId" ColumnName="CardInformationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="HomeServicesModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CategoryImage" ColumnName="CategoryImage" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="HomeServicesModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyInfoes">
+            <EntityTypeMapping TypeName="HomeServicesModel.CompanyInfo">
+              <MappingFragment StoreEntitySet="CompanyInfo">
+                <ScalarProperty Name="CompanySlogan" ColumnName="CompanySlogan" />
+                <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+                <ScalarProperty Name="CompanyPhoneNo2" ColumnName="CompanyPhoneNo2" />
+                <ScalarProperty Name="CompanyPhoneNo1" ColumnName="CompanyPhoneNo1" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="Companyname" ColumnName="Companyname" />
+                <ScalarProperty Name="CompanyInfoId" ColumnName="CompanyInfoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Complaints">
+            <EntityTypeMapping TypeName="HomeServicesModel.Complaint">
+              <MappingFragment StoreEntitySet="Complaint">
+                <ScalarProperty Name="ComplaintType" ColumnName="ComplaintType" />
+                <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="HomeServicesModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="HomeServicesModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="IsGuest" ColumnName="IsGuest" />
+                <ScalarProperty Name="Cityid" ColumnName="Cityid" />
+                <ScalarProperty Name="PincodeId" ColumnName="PincodeId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerComplaints">
+            <EntityTypeMapping TypeName="HomeServicesModel.CustomerComplaint">
+              <MappingFragment StoreEntitySet="CustomerComplaint">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ComplaintDateTime" ColumnName="ComplaintDateTime" />
+                <ScalarProperty Name="Reasons" ColumnName="Reasons" />
+                <ScalarProperty Name="MiscellanousData" ColumnName="MiscellanousData" />
+                <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
+                <ScalarProperty Name="CustomerComplaintId" ColumnName="CustomerComplaintId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceTokens">
+            <EntityTypeMapping TypeName="HomeServicesModel.DeviceToken">
+              <MappingFragment StoreEntitySet="DeviceToken">
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="Usertype" ColumnName="Usertype" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="DeviceTokenId" ColumnName="DeviceTokenId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IsNotificationShowns">
+            <EntityTypeMapping TypeName="HomeServicesModel.IsNotificationShown">
+              <MappingFragment StoreEntitySet="IsNotificationShown">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ProfessionalId" ColumnName="ProfessionalId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="IsNotificationShownId" ColumnName="IsNotificationShownId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailCredentials">
+            <EntityTypeMapping TypeName="HomeServicesModel.MailCredential">
+              <MappingFragment StoreEntitySet="MailCredentials">
+                <ScalarProperty Name="UseDefaultCredentials" ColumnName="UseDefaultCredentials" />
+                <ScalarProperty Name="PortNo" ColumnName="PortNo" />
+                <ScalarProperty Name="EnableSSL" ColumnName="EnableSSL" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MailCredentialsId" ColumnName="MailCredentialsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderRatings">
+            <EntityTypeMapping TypeName="HomeServicesModel.OrderRating">
+              <MappingFragment StoreEntitySet="OrderRating">
+                <ScalarProperty Name="Usercomments" ColumnName="Usercomments" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Ratings" ColumnName="Ratings" />
+                <ScalarProperty Name="OrderRatingId" ColumnName="OrderRatingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderRequests">
+            <EntityTypeMapping TypeName="HomeServicesModel.OrderRequest">
+              <MappingFragment StoreEntitySet="OrderRequests">
+                <ScalarProperty Name="IsCustomerNotify" ColumnName="IsCustomerNotify" />
+                <ScalarProperty Name="NotifyStatus" ColumnName="NotifyStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="SelectedTime" ColumnName="SelectedTime" />
+                <ScalarProperty Name="SelectedDate" ColumnName="SelectedDate" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Partnerid" ColumnName="Partnerid" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderRequestId" ColumnName="OrderRequestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="HomeServicesModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="SelectedDate" ColumnName="SelectedDate" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="IsGoingOn" ColumnName="IsGoingOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OrderPlacedOn" ColumnName="OrderPlacedOn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+                <ScalarProperty Name="DeliveredDateTime" ColumnName="DeliveredDateTime" />
+                <ScalarProperty Name="IsPaymentDone" ColumnName="IsPaymentDone" />
+                <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
+                <ScalarProperty Name="IsStarted" ColumnName="IsStarted" />
+                <ScalarProperty Name="GuestCityId" ColumnName="GuestCityId" />
+                <ScalarProperty Name="GuestPincodeId" ColumnName="GuestPincodeId" />
+                <ScalarProperty Name="GuestEmail" ColumnName="GuestEmail" />
+                <ScalarProperty Name="GuestPhone" ColumnName="GuestPhone" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderWithProfessionals">
+            <EntityTypeMapping TypeName="HomeServicesModel.OrderWithProfessional">
+              <MappingFragment StoreEntitySet="OrderWithProfessional">
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+                <ScalarProperty Name="SelectedDateTime" ColumnName="SelectedDateTime" />
+                <ScalarProperty Name="ProfessionalId" ColumnName="ProfessionalId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderProfessionalId" ColumnName="OrderProfessionalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartnerProfessionals">
+            <EntityTypeMapping TypeName="HomeServicesModel.PartnerProfessional">
+              <MappingFragment StoreEntitySet="PartnerProfessional">
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="TotalIncome" ColumnName="TotalIncome" />
+                <ScalarProperty Name="Ratings" ColumnName="Ratings" />
+                <ScalarProperty Name="Cityid" ColumnName="Cityid" />
+                <ScalarProperty Name="PincodeId" ColumnName="PincodeId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PartnerName" ColumnName="PartnerName" />
+                <ScalarProperty Name="PartnerProfessionalId" ColumnName="PartnerProfessionalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAT_DEMOGRAPHICS">
+            <EntityTypeMapping TypeName="HomeServicesModel.PAT_DEMOGRAPHICS">
+              <MappingFragment StoreEntitySet="PAT_DEMOGRAPHICS">
+                <ScalarProperty Name="PAT_STATUS" ColumnName="PAT_STATUS" />
+                <ScalarProperty Name="OUTCOME" ColumnName="OUTCOME" />
+                <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+                <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+                <ScalarProperty Name="ICUDAY" ColumnName="ICUDAY" />
+                <ScalarProperty Name="ENTRY_DATE" ColumnName="ENTRY_DATE" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="DIAGNOSIS" ColumnName="DIAGNOSIS" />
+                <ScalarProperty Name="DOAICU" ColumnName="DOAICU" />
+                <ScalarProperty Name="DOAH" ColumnName="DOAH" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="MRNO" ColumnName="MRNO" />
+                <ScalarProperty Name="BED_NO" ColumnName="BED_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="HomeServicesModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethod">
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="Paymentid" ColumnName="Paymentid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pincodes">
+            <EntityTypeMapping TypeName="HomeServicesModel.Pincode">
+              <MappingFragment StoreEntitySet="Pincode">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Pincode1" ColumnName="Pincode" />
+                <ScalarProperty Name="PincodeId" ColumnName="PincodeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreferOTPs">
+            <EntityTypeMapping TypeName="HomeServicesModel.PreferOTP">
+              <MappingFragment StoreEntitySet="PreferOTP">
+                <ScalarProperty Name="SMS" ColumnName="SMS" />
+                <ScalarProperty Name="Watsapp" ColumnName="Watsapp" />
+                <ScalarProperty Name="PreferOTPId" ColumnName="PreferOTPId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="HomeServicesModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceProvideds">
+            <EntityTypeMapping TypeName="HomeServicesModel.ServiceProvided">
+              <MappingFragment StoreEntitySet="ServiceProvided">
+                <ScalarProperty Name="SubcategoryId" ColumnName="SubcategoryId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="ServiceProvidedId" ColumnName="ServiceProvidedId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SMSApis">
+            <EntityTypeMapping TypeName="HomeServicesModel.SMSApi">
+              <MappingFragment StoreEntitySet="SMSApi">
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="SMSApiKey" ColumnName="SMSApiKey" />
+                <ScalarProperty Name="SMSUrl" ColumnName="SMSUrl" />
+                <ScalarProperty Name="SMSApiId" ColumnName="SMSApiId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategories">
+            <EntityTypeMapping TypeName="HomeServicesModel.SubCategory">
+              <MappingFragment StoreEntitySet="SubCategory">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SubCategoryImage" ColumnName="SubCategoryImage" />
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="HomeServicesModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WatsappCredentials">
+            <EntityTypeMapping TypeName="HomeServicesModel.WatsappCredential">
+              <MappingFragment StoreEntitySet="WatsappCredentials">
+                <ScalarProperty Name="WatsappPassword" ColumnName="WatsappPassword" />
+                <ScalarProperty Name="WatsappUsername" ColumnName="WatsappUsername" />
+                <ScalarProperty Name="WatsappCredentialsId" ColumnName="WatsappCredentialsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

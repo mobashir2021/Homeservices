@@ -1,0 +1,341 @@
+﻿
+@{
+    ViewBag.Title = "Create Bill";
+    Layout = "~/Areas/Professional/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Bill</h2>
+<br />
+
+@using (Html.BeginForm("CreateBill", "BillPayment", FormMethod.Post, new { id = "formsubmit" }))
+{
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2">
+                <label style="float:right;"> Choose Category : </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DropDownList("Category", ViewBag.Services as SelectList, "--Select Category--", new { @class = "form-control", @id = "categoryid" })
+            </div>
+            <div class="col-md-2">
+                <label style="float:right;"> Choose Customer : </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DropDownList("Customer", ViewBag.Customers as SelectList, "--Select Customer--", new { @class = "form-control", @id = "customerid" })
+            </div>
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group table-responsive table-full-width">
+                    <label class="form-control" style="text-align:center;" for="sel1">Add SubCategory</label>
+                    <br />
+                    <table id="addproducttable" class="table table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <th width="30%">Select Subcategory</th>
+                                <th width="10%">Qty</th>
+                                <th width="15%">Price</th>
+                                @*<th width="5%">GST</th>
+                                    <th width="5%">CGST</th>
+                                    <th width="5%">SGST</th>*@
+
+                                <th width="15%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td>
+                                    @Html.DropDownList("Subcategory1", new SelectList(" "), "--Select Subcategory--", new { @class = "form-control subcategoryselect", @id = "subcategoryid1" })
+                                </td>
+                                <td>
+
+                                    <input style="width: 50px;" type="text" id="quantity1" class="quantity quantity1" name="quantity" required>
+
+                                </td>
+                                <td>
+
+                                    <input style="width: 70px;" type="text" id="baseprice1" name="baseprice1">
+
+                                </td>
+                                @*<td>
+
+                                        <input style="width: 30px;" type="text" id="gstpercent1" name="gstpercent1">
+
+                                    </td>
+                                    <td>
+
+                                        <input style="width: 30px;" type="text" id="cgstpercent1" name="cgstpercent1">
+
+                                    </td>
+                                    <td>
+
+                                        <input style="width: 30px;" type="text" id="sgstpercent1" name="sgstpercent1">
+
+                                    </td>*@
+
+                                <td>
+                                    <button name="addmore" id="addmore" class="form-control col-md-1">Add More</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <hr style="border-color:#122b40;">
+    <div class="row">
+        <div class="col-md-3">
+            <label>CGST(%)</label>
+            <input type="text" name="cgst" id="cgst" placeholder="CGST" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label>SGST(%)</label>
+            <input type="text" name="sgst" id="sgst" placeholder="SGST" class="form-control">
+        </div>
+        <div class="col-md-2" >
+            <label style="float:right;">Total Amount : </label>
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="totalamount" id="totalamount" placeholder="Total Amount" class="form-control">
+        </div>
+
+    </div>
+    <hr style="border-color:#122b40;">
+    <br />
+    <div class="row">
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="save"></label>
+            <div class="col-md-4">
+                <button type="submit" id="btnsubmit" class="btn btn-primary">Save</button>
+                <button id="saveaspdf" name="saveaspdf" class="btn btn-primary">SaveAs PDF</button>
+                <input type="submit" class="btn btn-info" value="Refresh Page" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+
+    <div id="divProcessing">
+        <p>
+            Processing, please wait . . .
+            <img src="~/Areas/Admin/images/ajax-loader.gif" />
+        </p>
+    </div>
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+    var amountpaid = 0;
+    var totalamount = 0;
+        var amountdue = 0;
+        var totalwithoutgst = 0;
+
+    if($('#totalamount').val() != '') {
+        totalamount = parseInt($('#totalamount').val());
+    }
+
+
+        $(document).ready(function () {
+            $('#divProcessing').hide();
+            $("#btnsubmit").click(function (e) {
+                e.preventDefault();
+                //alert(JSON.stringify($("#formsubmit").serialize()));
+                //alert($("#categoryid option:selected").text());
+                if ($("#categoryid option:selected").text() == "--Select Category--") {
+                    alert("Kindly Choose Order!");
+                    return;
+                }
+                $(".quantity").each(function() {
+                    //alert($(this).val());
+                    if ($(this).val() == "") {
+                        alert("Kindly enter quantity!");
+                        return;
+                    }
+                });
+                if ($("#cgst").val() == "") {
+                    alert("Kindly enter CGST Percent!");
+                        return;
+                }
+                if ($("#sgst").val() == "") {
+                    alert("Kindly enter SGST Percent!");
+                        return;
+                }
+                $('#divProcessing').show();
+                $.ajax({
+                    type: "POST",
+                    url: '../../Professional/BillPayment/SaveBillDetails',
+                    data: { 'billArray': $("#formsubmit").serialize() },
+                    success: function (response) {
+                        $('#divProcessing').hide();
+                        alert("Billpayment Saved and email Of the OrderReceipt has been sent to customer");
+                        window.location.href = '/Professional/BillPayment/Index/';
+                    }
+                });
+
+            });
+
+            $(document).on('change', '.subcategoryselect', function () {
+                //var row_index = $(x).closest('tr').index();
+
+                var row_index = $(this).parents('tr').index();
+                var productvar = '#subcategoryid' + (row_index + 1).toString();
+                var value = $(productvar).val().split("~");
+                $('#baseprice' + (row_index + 1)).val(value[1]);
+
+            });
+
+            $(document).on('focusout','.quantity', function () {
+                var row_index = $(this).parents('tr').index();
+                CalculateValue(row_index);
+            });
+
+            $(document).on('focusout','#cgst', function () {
+                gstCalculation();
+            });
+
+            $(document).on('focusout','#sgst', function () {
+                gstCalculation();
+                
+            });
+
+            $("#categoryid").change(function () {
+                $.get("../../Professional/BillPayment/GetSubcategory", { categoryid: $("#categoryid").val() }, function (data) {
+                    $("#subcategoryid1").empty();
+                    var ij = 0;
+                    var firstvalue = "";
+                    $.each(data, function (index, row) {
+                        $("#subcategoryid1").append("<option value='" + row.SubCategoryId + "'>" + row.SubCategoryName + "</option>");
+                        if (ij == 0) {
+                            firstvalue = row.SubCategoryId.toString();
+                        }
+                        ij = ij + 1;
+                    });
+                    var value = firstvalue.split("~");
+                    $("#baseprice1").val(value[1]);
+                });
+            });
+
+
+            var i = 1;
+            $('#addmore').click(function (event) {
+                event.preventDefault();
+                i++;
+                var htmldata = '<select class="form-control subcategoryselect" name="Subcategory' + i.toString() + '" id="subcategoryid' + i.toString() + '"><option value="0">Select SubCategory</option></select>';
+
+                $('#addproducttable').append('<tr>\n' +
+                    '                                        <td>\n' +
+                    '                                            <div class="col-lg-8" style="width: 100%;">\n' + htmldata +
+                    '                                            </div>\n' +
+                    '                                        </td>\n' +
+                    '                                        <td>\n' +
+                    '                                            <input style="width: 50px;" type="text" class="quantity"  id="quantity' + i.toString() + '"  name="quantity' + i.toString() + '" \n' +
+                    '                                        </td>\n' +
+                    '                                        <td>\n' +
+                    '                                            <input style="width: 70px;" type="text" id="baseprice' + i.toString() + '" name="baseprice' + i.toString() + '" \n' +
+                    '                                        </td>\n' +
+                    //'                                        <td>\n' +
+                    //'                                            <input style="width: 30px;" type="text" id="gstpercent'+i.toString()+'" name="gstpercent'+i.toString()+'" \n' +
+                    //'                                        </td>\n' +
+                    //'                                        <td>\n' +
+                    //'                                            <input style="width: 30px;" type="text" id="cgstpercent'+i.toString()+'" name="cgstpercent'+i.toString()+'" \n' +
+                    //'                                        </td>\n' +
+                    //'                                        <td>\n' +
+                    //'                                            <input style="width: 30px;" type="text" id="sgstpercent'+i.toString()+'" name="sgstpercent'+i.toString()+'" \n' +
+                    //'                                        </td>\n' +
+
+                    //'                                            ' +
+                    //'                                        </td>\n' +
+                    '                                    </tr>');
+                var idselect = '#subcategoryid' + i.toString();
+                var idpriceselect = "#baseprice" + i.toString();
+                //$.ajax({
+                //   url:"getproductselect.php",
+                //   method:"POST",
+                //    dataType:"json",
+                //    success:function (response) {
+                //        $.each(response,function(key, value)
+                //        {
+                //            var arr = value.toString().split(',');
+                //            $(idselect).append('<option value="' + arr[0] + '">' + arr[1] + '</option>');
+                //        });
+                //    }
+                //});
+                $.get("../../Professional/BillPayment/GetSubcategory", { categoryid: $("#categoryid").val() }, function (data) {
+                    $(idselect).empty();
+                    var ij = 0;
+                    var firstvalue = "";
+                    $.each(data, function (index, row) {
+                        $(idselect).append("<option value='" + row.SubCategoryId + "'>" + row.SubCategoryName + "</option>");
+                        if (ij == 0) {
+                            firstvalue = row.SubCategoryId;
+                        }
+                        ij = ij + 1;
+                    });
+                    var value = firstvalue.split("~");
+                    $(idpriceselect).val(value[1]);
+                });
+
+            });
+        });
+
+        function CalculateValue(row_index) {
+
+            var productvar = '#subcategoryid' + (row_index + 1).toString();
+            var cgstpercentvar = '#cgst';
+            var sgstpercentvar = "#sgst";
+            var quantityvar = '#quantity' + (row_index + 1).toString();
+            var basepricevar = '#baseprice' + (row_index + 1).toString();
+            var gstvalue = 0;
+            var baseprice = 0;
+            var totalamount = 0;
+            var totalvalue = 0;
+            if ($(quantityvar).val() != '' && $(productvar).val() != '') {
+                totalwithoutgst = totalwithoutgst + ($(quantityvar).val() * $(basepricevar).val());
+            }
+            if ($('#totalamount').val() != '')
+                totalamount = parseInt($('#totalamount').val());
+            else
+                totalamount = 0;
+            if ($(quantityvar).val() != '' && $(productvar).val() != '' && $(cgstpercentvar).val() != '' && $(sgstpercentvar).val() != '') {
+                gstvalue = parseInt($(cgstpercentvar).val()) + parseInt($(sgstpercentvar).val());
+                //baseprice = parseInt($(quantityvar).val()) * parseInt($(basepricevar).val());
+                totalvalue = totalwithoutgst * (1 + (gstvalue / 100));
+            }
+
+            totalamount = totalamount + totalvalue;
+
+            $('#totalamount').val(totalamount);
+        }
+
+        function gstCalculation() {
+            var cgstpercentvar = '#cgst';
+            var sgstpercentvar = "#sgst";
+            var gstvalue = 0;
+            var totalvalue = 0;
+            var totalamount = 0;
+            if ($('#totalamount').val() != '')
+                totalamount = parseInt($('#totalamount').val());
+            else
+                totalamount = 0;
+            if ($(cgstpercentvar).val() != '' && $(sgstpercentvar).val() != '' && totalwithoutgst > 0) {
+                gstvalue = parseInt($(cgstpercentvar).val()) + parseInt($(sgstpercentvar).val());
+                totalvalue = totalwithoutgst * (1 + (gstvalue / 100));
+                totalamount = totalamount + totalvalue;
+
+                $('#totalamount').val(totalamount);
+            }
+
+        }
+
+    </script>
+
+}

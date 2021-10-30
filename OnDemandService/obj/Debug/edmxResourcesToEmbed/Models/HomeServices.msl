@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HomeServicesModelStoreContainer" CdmEntityContainer="HomeServicesEntities">
+    <EntitySetMapping Name="BillPayments">
+      <EntityTypeMapping TypeName="HomeServicesModel.BillPayment">
+        <MappingFragment StoreEntitySet="BillPayment">
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="BillCreationDate" ColumnName="BillCreationDate" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="ProfessionalId" ColumnName="ProfessionalId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="BillPaymentId" ColumnName="BillPaymentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillPaymentDetails">
+      <EntityTypeMapping TypeName="HomeServicesModel.BillPaymentDetail">
+        <MappingFragment StoreEntitySet="BillPaymentDetails">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="BillPaymentId" ColumnName="BillPaymentId" />
+          <ScalarProperty Name="BillPaymentDetailsId" ColumnName="BillPaymentDetailsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CardInformations">
+      <EntityTypeMapping TypeName="HomeServicesModel.CardInformation">
+        <MappingFragment StoreEntitySet="CardInformation">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="IFSCCode" ColumnName="IFSCCode" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+          <ScalarProperty Name="CardInformationId" ColumnName="CardInformationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="HomeServicesModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CategoryImage" ColumnName="CategoryImage" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="HomeServicesModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyInfoes">
+      <EntityTypeMapping TypeName="HomeServicesModel.CompanyInfo">
+        <MappingFragment StoreEntitySet="CompanyInfo">
+          <ScalarProperty Name="CompanySlogan" ColumnName="CompanySlogan" />
+          <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+          <ScalarProperty Name="CompanyPhoneNo2" ColumnName="CompanyPhoneNo2" />
+          <ScalarProperty Name="CompanyPhoneNo1" ColumnName="CompanyPhoneNo1" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="Companyname" ColumnName="Companyname" />
+          <ScalarProperty Name="CompanyInfoId" ColumnName="CompanyInfoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Complaints">
+      <EntityTypeMapping TypeName="HomeServicesModel.Complaint">
+        <MappingFragment StoreEntitySet="Complaint">
+          <ScalarProperty Name="ComplaintType" ColumnName="ComplaintType" />
+          <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="HomeServicesModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="HomeServicesModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="IsGuest" ColumnName="IsGuest" />
+          <ScalarProperty Name="Cityid" ColumnName="Cityid" />
+          <ScalarProperty Name="PincodeId" ColumnName="PincodeId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerComplaints">
+      <EntityTypeMapping TypeName="HomeServicesModel.CustomerComplaint">
+        <MappingFragment StoreEntitySet="CustomerComplaint">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="ComplaintDateTime" ColumnName="ComplaintDateTime" />
+          <ScalarProperty Name="Reasons" ColumnName="Reasons" />
+          <ScalarProperty Name="MiscellanousData" ColumnName="MiscellanousData" />
+          <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
+          <ScalarProperty Name="CustomerComplaintId" ColumnName="CustomerComplaintId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeviceTokens">
+      <EntityTypeMapping TypeName="HomeServicesModel.DeviceToken">
+        <MappingFragment StoreEntitySet="DeviceToken">
+          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="Usertype" ColumnName="Usertype" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="DeviceTokenId" ColumnName="DeviceTokenId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IsNotificationShowns">
+      <EntityTypeMapping TypeName="HomeServicesModel.IsNotificationShown">
+        <MappingFragment StoreEntitySet="IsNotificationShown">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="ProfessionalId" ColumnName="ProfessionalId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="IsNotificationShownId" ColumnName="IsNotificationShownId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MailCredentials">
+      <EntityTypeMapping TypeName="HomeServicesModel.MailCredential">
+        <MappingFragment StoreEntitySet="MailCredentials">
+          <ScalarProperty Name="UseDefaultCredentials" ColumnName="UseDefaultCredentials" />
+          <ScalarProperty Name="PortNo" ColumnName="PortNo" />
+          <ScalarProperty Name="EnableSSL" ColumnName="EnableSSL" />
+          <ScalarProperty Name="Host" ColumnName="Host" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MailCredentialsId" ColumnName="MailCredentialsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderRatings">
+      <EntityTypeMapping TypeName="HomeServicesModel.OrderRating">
+        <MappingFragment StoreEntitySet="OrderRating">
+          <ScalarProperty Name="Usercomments" ColumnName="Usercomments" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="Ratings" ColumnName="Ratings" />
+          <ScalarProperty Name="OrderRatingId" ColumnName="OrderRatingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderRequests">
+      <EntityTypeMapping TypeName="HomeServicesModel.OrderRequest">
+        <MappingFragment StoreEntitySet="OrderRequests">
+          <ScalarProperty Name="IsCustomerNotify" ColumnName="IsCustomerNotify" />
+          <ScalarProperty Name="NotifyStatus" ColumnName="NotifyStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="SelectedTime" ColumnName="SelectedTime" />
+          <ScalarProperty Name="SelectedDate" ColumnName="SelectedDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Partnerid" ColumnName="Partnerid" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="OrderRequestId" ColumnName="OrderRequestId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="HomeServicesModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+          <ScalarProperty Name="SelectedDate" ColumnName="SelectedDate" />
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="IsGoingOn" ColumnName="IsGoingOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OrderPlacedOn" ColumnName="OrderPlacedOn" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+          <ScalarProperty Name="DeliveredDateTime" ColumnName="DeliveredDateTime" />
+          <ScalarProperty Name="IsPaymentDone" ColumnName="IsPaymentDone" />
+          <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
+          <ScalarProperty Name="IsStarted" ColumnName="IsStarted" />
+          <ScalarProperty Name="GuestCityId" ColumnName="GuestCityId" />
+          <ScalarProperty Name="GuestPincodeId" ColumnName="GuestPincodeId" />
+          <ScalarProperty Name="GuestEmail" ColumnName="GuestEmail" />
+          <ScalarProperty Name="GuestPhone" ColumnName="GuestPhone" />
+          <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderWithProfessionals">
+      <EntityTypeMapping TypeName="HomeServicesModel.OrderWithProfessional">
+        <MappingFragment StoreEntitySet="OrderWithProfessional">
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+          <ScalarProperty Name="SelectedDateTime" ColumnName="SelectedDateTime" />
+          <ScalarProperty Name="ProfessionalId" ColumnName="ProfessionalId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="OrderProfessionalId" ColumnName="OrderProfessionalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartnerProfessionals">
+      <EntityTypeMapping TypeName="HomeServicesModel.PartnerProfessional">
+        <MappingFragment StoreEntitySet="PartnerProfessional">
+          <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+          <ScalarProperty Name="TotalIncome" ColumnName="TotalIncome" />
+          <ScalarProperty Name="Ratings" ColumnName="Ratings" />
+          <ScalarProperty Name="Cityid" ColumnName="Cityid" />
+          <ScalarProperty Name="PincodeId" ColumnName="PincodeId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PartnerName" ColumnName="PartnerName" />
+          <ScalarProperty Name="PartnerProfessionalId" ColumnName="PartnerProfessionalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAT_DEMOGRAPHICS">
+      <EntityTypeMapping TypeName="HomeServicesModel.PAT_DEMOGRAPHICS">
+        <MappingFragment StoreEntitySet="PAT_DEMOGRAPHICS">
+          <ScalarProperty Name="PAT_STATUS" ColumnName="PAT_STATUS" />
+          <ScalarProperty Name="OUTCOME" ColumnName="OUTCOME" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+          <ScalarProperty Name="ICUDAY" ColumnName="ICUDAY" />
+          <ScalarProperty Name="ENTRY_DATE" ColumnName="ENTRY_DATE" />
+          <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+          <ScalarProperty Name="DIAGNOSIS" ColumnName="DIAGNOSIS" />
+          <ScalarProperty Name="DOAICU" ColumnName="DOAICU" />
+          <ScalarProperty Name="DOAH" ColumnName="DOAH" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="AGE" ColumnName="AGE" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="MRNO" ColumnName="MRNO" />
+          <ScalarProperty Name="BED_NO" ColumnName="BED_NO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentMethods">
+      <EntityTypeMapping TypeName="HomeServicesModel.PaymentMethod">
+        <MappingFragment StoreEntitySet="PaymentMethod">
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="Paymentid" ColumnName="Paymentid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pincodes">
+      <EntityTypeMapping TypeName="HomeServicesModel.Pincode">
+        <MappingFragment StoreEntitySet="Pincode">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Pincode1" ColumnName="Pincode" />
+          <ScalarProperty Name="PincodeId" ColumnName="PincodeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PreferOTPs">
+      <EntityTypeMapping TypeName="HomeServicesModel.PreferOTP">
+        <MappingFragment StoreEntitySet="PreferOTP">
+          <ScalarProperty Name="SMS" ColumnName="SMS" />
+          <ScalarProperty Name="Watsapp" ColumnName="Watsapp" />
+          <ScalarProperty Name="PreferOTPId" ColumnName="PreferOTPId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="HomeServicesModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Roles" ColumnName="Roles" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceProvideds">
+      <EntityTypeMapping TypeName="HomeServicesModel.ServiceProvided">
+        <MappingFragment StoreEntitySet="ServiceProvided">
+          <ScalarProperty Name="SubcategoryId" ColumnName="SubcategoryId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+          <ScalarProperty Name="ServiceProvidedId" ColumnName="ServiceProvidedId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSApis">
+      <EntityTypeMapping TypeName="HomeServicesModel.SMSApi">
+        <MappingFragment StoreEntitySet="SMSApi">
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="SMSApiKey" ColumnName="SMSApiKey" />
+          <ScalarProperty Name="SMSUrl" ColumnName="SMSUrl" />
+          <ScalarProperty Name="SMSApiId" ColumnName="SMSApiId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubCategories">
+      <EntityTypeMapping TypeName="HomeServicesModel.SubCategory">
+        <MappingFragment StoreEntitySet="SubCategory">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="SubCategoryImage" ColumnName="SubCategoryImage" />
+          <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+          <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="HomeServicesModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WatsappCredentials">
+      <EntityTypeMapping TypeName="HomeServicesModel.WatsappCredential">
+        <MappingFragment StoreEntitySet="WatsappCredentials">
+          <ScalarProperty Name="WatsappPassword" ColumnName="WatsappPassword" />
+          <ScalarProperty Name="WatsappUsername" ColumnName="WatsappUsername" />
+          <ScalarProperty Name="WatsappCredentialsId" ColumnName="WatsappCredentialsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

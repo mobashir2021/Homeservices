@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Professional/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bill Payment List</h2>
+<table class="table" id="ongoingorder">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Service Name
+            </th>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Order Date
+            </th>
+
+            <th>
+                Total Price
+            </th>
+
+            <th>Action</th>
+        </tr>
+    </thead>
+
+
+
+
+</table>
+
+@section styles{
+    <style type="text/css">
+        .glyphicon {
+            font-size: 26px;
+        }
+
+        .user-menu {
+            font-size: 26px;
+        }
+    </style>
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ongoingorder').DataTable({
+                "ajax": {
+                    "url": "../../Professional/BillPayment/BillPaymentListJson",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "SNo", "width": "70px" },
+                    { "data": "Service", "width": "170px" },
+                    { "data": "CustomerName", "width": "170px" },
+                    { "data": "AppointmentDate", "width": "170px" },
+                    { "data": "BillTotalPrice", "width": "170px" },
+                    //{
+                    //    "data": "StatusValue", "width": "150px", "render": function (data) {
+                    //        var s1 = "~";
+                    //        var s2 = data;
+                    //        if (s2.indexOf(s1) != -1) {
+                    //            data = data.replace("~", "");
+                    //            return '<a class="popup" href="../../Professional/Orders/AcceptRequest/' + data + '">Accept</a>';
+                    //        } else {
+                    //            return data;
+                    //        }
+
+                    //    }
+                    //}
+                    {
+                        "data": "BillPaymentId", "width": "50px", "render": function (data) {
+                            return '<a class="popup" href="../../Professional/BillPayment/BillPaymentDetailsData/'+data+'">Details</a> | <a class="popup" href="../../Professional/BillPayment/Download/' + data + '">Download Invoice</a>';
+                        }
+                    }
+                ]
+            });
+        });
+
+    </script>
+
+}
+
+

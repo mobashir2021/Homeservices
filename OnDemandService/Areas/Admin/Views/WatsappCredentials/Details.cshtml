@@ -1,0 +1,35 @@
+﻿@model OnDemandService.Models.WatsappCredential
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WatsappCredential</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WatsappUsername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WatsappUsername)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WatsappPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WatsappPassword)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WatsappCredentialsId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

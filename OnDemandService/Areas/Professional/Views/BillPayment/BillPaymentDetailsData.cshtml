@@ -1,0 +1,70 @@
+﻿@model OnDemandService.Models.OrderViewModel
+@{
+    ViewBag.Title = "BillPaymentDetailsData";
+    Layout = "~/Areas/Professional/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BillPayment Details</h2>
+<br />
+<br />
+<div class="row" style="padding:25px;">
+    <div class="col-md-3">
+        <label>Catergory : </label>
+        @Html.DisplayFor(x => x.Service)
+    </div>
+    <div class="col-md-3">
+        <label>Order Date : </label>
+        @Html.DisplayFor(x => x.AppointmentDate)
+    </div>
+    <div class="col-md-3">
+        <label>Customer : </label>
+        @Html.DisplayFor(x => x.CustomerName)
+    </div>
+    <hr style="width:50%;text-align:left;margin-left:0; background-color:black;">
+</div>
+
+<br />
+
+<div class="row" style="padding:25px;">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>SubCategory</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        @foreach (var pd in Model.paymentDetails)
+        {
+            <tr>
+                <td>@Html.DisplayTextFor(m => pd.Subcategoryname)</td>
+                <td>@Html.DisplayTextFor(m => pd.quantity)</td>
+                <td>@Html.DisplayTextFor(m => pd.Price)</td>
+            </tr>
+        }
+    </table>
+</div>
+<br />
+
+<div class="row" style="padding:25px;">
+    <div class="col-md-3">
+        <label>CGST(%)  : </label>
+        @Html.DisplayFor(x => x.CGST)
+    </div>
+    <div class="col-md-3">
+        <label>SGST(%)  : </label>
+        @Html.DisplayFor(x => x.SGST)
+    </div>
+    <div class="col-md-3">
+        <label>Total Price  : </label>
+        @Html.DisplayFor(x => x.BillTotalPrice)
+    </div>
+</div>
+<br /> 
+<div class="row">
+    <div class="col-md-2">
+        <input type="submit" value="Download Invoice" class="btn btn-primary" />
+    </div>
+
+</div>
+

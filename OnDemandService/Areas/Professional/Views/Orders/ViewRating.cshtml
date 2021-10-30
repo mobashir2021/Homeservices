@@ -1,0 +1,60 @@
+﻿@model OnDemandService.Models.OrderViewModel
+@{
+    ViewBag.Title = "ViewRating";
+    Layout = "~/Areas/Professional/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Rating</h2>
+
+<div class="form-group">
+    @{
+        var defaultStars = 5 - Model.Rating;
+        <h4>Your Feedback</h4>
+        <hr />
+        <p>
+            <label>
+                Your Comments :
+            </label><br />
+            @Model.Usercomments
+        </p>
+
+        <span class="text-warning">
+
+            @for (int i = 1; i <= Model.Rating; i++)
+            {
+                <i class="fas fa-star"></i>
+            }
+            @for (int i = 1; i <= defaultStars; i++)
+            {
+                <i class="far fa-star"></i>
+            }
+
+
+        </span>
+    }
+    <br />
+    <br />
+    @Html.ActionLink("Back to Mainview", "CompletedAppointments", "Orders", null, new { @class = "btn btn-primary" })
+
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(".ratingStar").hover(function () {
+
+            $(".ratingStar").addClass("far").removeClass("fas");
+            $(this).addClass("fas").removeClass("far");
+            $(this).prevAll(".ratingStar").addClass("fas").removeClass("far");
+        });
+
+        $(".ratingStar").click(function () {
+            var starValue = $(this).attr("data-value");
+            $("#ratingValue").val(starValue);
+        });
+
+
+        
+
+    </script>
+
+}
+
